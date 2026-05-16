@@ -1,0 +1,22 @@
+# This is a comment
+
+# Ignore a specific file
+
+
+# Ignore all files with an extension
+# *.xlsx
+# *.csv
+
+
+# # Ignore a whole folder
+.claude/
+Station Sample Data/
+
+# # Ignore a folder only at the root (not subfolders)
+# /dist
+
+# # Ignore everything inside a folder but keep the folder itself
+# logs/*
+
+# # Exception: un-ignore a specific file (! means "don't ignore this")
+# !important.csv
