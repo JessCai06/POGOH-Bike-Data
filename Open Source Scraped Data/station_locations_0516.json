@@ -1,0 +1,4628 @@
+{
+  "last_updated": "2026-05-16T01:08:22Z",
+  "ttl": 9,
+  "data": {
+    "stations": [
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "1",
+        "external_id": "ff65ea21-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Pierce St & Summerlea St",
+            "language": "en"
+          },
+          {
+            "text": "Pierce St & Summerlea St",
+            "language": "fr"
+          },
+          {
+            "text": "Pierce St & Summerlea St",
+            "language": "nl"
+          },
+          {
+            "text": "Pierce St & Summerlea St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4565066778014,
+        "lon": -79.932330594307,
+        "post_code": "15201",
+        "capacity": 19,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "2",
+        "external_id": "ff65f0ec-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Eliza Furnace Trail & Swineburne St",
+            "language": "en"
+          },
+          {
+            "text": "Eliza Furnace Trail & Swineburne St",
+            "language": "fr"
+          },
+          {
+            "text": "Eliza Furnace Trail & Swineburne St",
+            "language": "nl"
+          },
+          {
+            "text": "Eliza Furnace Trail & Swineburne St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4258,
+        "lon": -79.9534,
+        "address": "Eliza Furnace Trail & Swineburne St",
+        "post_code": "15201",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "3",
+        "external_id": "ff65f654-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Centre Ave & Addison St",
+            "language": "en"
+          },
+          {
+            "text": "Centre Ave & Addison St",
+            "language": "fr"
+          },
+          {
+            "text": "Centre Ave & Addison St",
+            "language": "nl"
+          },
+          {
+            "text": "Centre Ave & Addison St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4446,
+        "lon": -79.9783,
+        "address": "Centre Ave & Addison St",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "4",
+        "external_id": "ff65f8a7-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Burns White Center at 3 Crossings",
+            "language": "en"
+          },
+          {
+            "text": "Burns White Center at 3 Crossings",
+            "language": "fr"
+          },
+          {
+            "text": "Burns White Center at 3 Crossings",
+            "language": "nl"
+          },
+          {
+            "text": "Burns White Center at 3 Crossings",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4563428549798,
+        "lon": -79.9801555681229,
+        "address": "Burns white at 3 crssings",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "5",
+        "external_id": "ff65faea-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Allegheny Station",
+            "language": "en"
+          },
+          {
+            "text": "Allegheny Station",
+            "language": "fr"
+          },
+          {
+            "text": "Allegheny Station",
+            "language": "nl"
+          },
+          {
+            "text": "Allegheny Station",
+            "language": "es"
+          }
+        ],
+        "lat": 40.448301,
+        "lon": -80.018007,
+        "address": "Allegheny Station",
+        "post_code": "15233",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "6",
+        "external_id": "ff65fd5e-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "10th St & Penn Ave",
+            "language": "en"
+          },
+          {
+            "text": "10th St & Penn Ave",
+            "language": "fr"
+          },
+          {
+            "text": "10th St & Penn Ave",
+            "language": "nl"
+          },
+          {
+            "text": "10th St & Penn Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4446526,
+        "lon": -79.9960739,
+        "address": "10th St & Penn Ave",
+        "post_code": "15222",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "7",
+        "external_id": "ff65ff84-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Liberty Ave & Gross St",
+            "language": "en"
+          },
+          {
+            "text": "Liberty Ave & Gross St",
+            "language": "fr"
+          },
+          {
+            "text": "Liberty Ave & Gross St",
+            "language": "nl"
+          },
+          {
+            "text": "Liberty Ave & Gross St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4595877,
+        "lon": -79.9452035,
+        "address": "Liberty Ave",
+        "post_code": "15224",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "8",
+        "external_id": "ff660192-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Glasshouse",
+            "language": "en"
+          },
+          {
+            "text": "Glasshouse",
+            "language": "fr"
+          },
+          {
+            "text": "Glasshouse",
+            "language": "nl"
+          },
+          {
+            "text": "Glasshouse",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4329,
+        "lon": -80.003,
+        "address": "Glasshouse",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "9",
+        "external_id": "ff660492-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "South Side Trail & S 4th St",
+            "language": "en"
+          },
+          {
+            "text": "South Side Trail & S 4th St",
+            "language": "fr"
+          },
+          {
+            "text": "South Side Trail & S 4th St",
+            "language": "nl"
+          },
+          {
+            "text": "South Side Trail & S 4th St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.431336,
+        "lon": -79.995106,
+        "address": "South Side Trail & S 4th St",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "10",
+        "external_id": "ff6606ed-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Zulema St & Coltart Ave",
+            "language": "en"
+          },
+          {
+            "text": "Zulema St & Coltart Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Zulema St & Coltart Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Zulema St & Coltart Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.436055,
+        "lon": -79.956827,
+        "address": "Zulema St & Coltart Ave",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "11",
+        "external_id": "ff660907-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Ellsworth Ave & N Neville St",
+            "language": "en"
+          },
+          {
+            "text": "Ellsworth Ave & N Neville St",
+            "language": "fr"
+          },
+          {
+            "text": "Ellsworth Ave & N Neville St",
+            "language": "nl"
+          },
+          {
+            "text": "Ellsworth Ave & N Neville St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.448203,
+        "lon": -79.947507,
+        "address": "Ellsworth Ave & N Neville St",
+        "post_code": "1212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "12",
+        "external_id": "ff660b2e-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "O'Hara St & University Place",
+            "language": "en"
+          },
+          {
+            "text": "O'Hara St & University Place",
+            "language": "fr"
+          },
+          {
+            "text": "O'Hara St & University Place",
+            "language": "nl"
+          },
+          {
+            "text": "O'Hara St & University Place",
+            "language": "es"
+          }
+        ],
+        "lat": 40.445117,
+        "lon": -79.957118,
+        "address": "O'Hara St and University Place",
+        "post_code": "1212",
+        "capacity": 23,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "13",
+        "external_id": "ff660d4c-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "S Bouquet Ave & Sennott St",
+            "language": "en"
+          },
+          {
+            "text": "S Bouquet Ave & Sennott St",
+            "language": "fr"
+          },
+          {
+            "text": "S Bouquet Ave & Sennott St",
+            "language": "nl"
+          },
+          {
+            "text": "S Bouquet Ave & Sennott St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.441638,
+        "lon": -79.955764,
+        "address": "S Bouquet Ave & Sennott St",
+        "post_code": "1212",
+        "capacity": 23,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "14",
+        "external_id": "ff660f5a-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Tioga St & N Homewood Ave",
+            "language": "en"
+          },
+          {
+            "text": "Tioga St & N Homewood Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Tioga St & N Homewood Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Tioga St & N Homewood Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4542263889049,
+        "lon": -79.897544413353,
+        "address": "N Homewood Ave & Finance St",
+        "post_code": "1212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "15",
+        "external_id": "ff66116b-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Ivy St & Walnut St",
+            "language": "en"
+          },
+          {
+            "text": "Ivy St & Walnut St",
+            "language": "fr"
+          },
+          {
+            "text": "Ivy St & Walnut St",
+            "language": "nl"
+          },
+          {
+            "text": "Ivy St & Walnut St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.451781,
+        "lon": -79.932253,
+        "address": "Ivy St & Walnut St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "16",
+        "external_id": "ff661371-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Penn Ave & Putnam St (Bakery Square)",
+            "language": "en"
+          },
+          {
+            "text": "Penn Ave & Putnam St (Bakery Square)",
+            "language": "fr"
+          },
+          {
+            "text": "Penn Ave & Putnam St (Bakery Square)",
+            "language": "nl"
+          },
+          {
+            "text": "Penn Ave & Putnam St (Bakery Square)",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4559,
+        "lon": -79.9153,
+        "address": "Penn Ave & Putnam St (Bakery Square)",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "17",
+        "external_id": "ff66163f-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Taylor St & Liberty Ave",
+            "language": "en"
+          },
+          {
+            "text": "Taylor St & Liberty Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Taylor St & Liberty Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Taylor St & Liberty Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.462778,
+        "lon": -79.950868,
+        "address": "Taylor St & Liberty Ave",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "18",
+        "external_id": "ff66186e-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "21st St & Penn Ave",
+            "language": "en"
+          },
+          {
+            "text": "21st St & Penn Ave",
+            "language": "fr"
+          },
+          {
+            "text": "21st St & Penn Ave",
+            "language": "nl"
+          },
+          {
+            "text": "21st St & Penn Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4518,
+        "lon": -79.9833,
+        "address": "21st St & Penn Ave",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "19",
+        "external_id": "ff661cf7-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "42nd St & Butler St",
+            "language": "en"
+          },
+          {
+            "text": "42nd St & Butler St",
+            "language": "fr"
+          },
+          {
+            "text": "42nd St & Butler St",
+            "language": "nl"
+          },
+          {
+            "text": "42nd St & Butler St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.470221,
+        "lon": -79.96038,
+        "address": "42nd St & Butler St",
+        "post_code": "1212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "20",
+        "external_id": "ff661efe-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Boulevard of the Allies & Parkview Ave",
+            "language": "en"
+          },
+          {
+            "text": "Boulevard of the Allies & Parkview Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Boulevard of the Allies & Parkview Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Boulevard of the Allies & Parkview Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4344,
+        "lon": -79.9519,
+        "address": "4227 Fifth Avenue",
+        "post_code": "15213",
+        "capacity": 23,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "21",
+        "external_id": "ff662128-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Liberty Ave & Stanwix St",
+            "language": "en"
+          },
+          {
+            "text": "Liberty Ave & Stanwix St",
+            "language": "fr"
+          },
+          {
+            "text": "Liberty Ave & Stanwix St",
+            "language": "nl"
+          },
+          {
+            "text": "Liberty Ave & Stanwix St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4412,
+        "lon": -80.0048,
+        "address": "Liberty & Stanwix",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "22",
+        "external_id": "ff66236a-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Forbes Ave & Market Square",
+            "language": "en"
+          },
+          {
+            "text": "Forbes Ave & Market Square",
+            "language": "fr"
+          },
+          {
+            "text": "Forbes Ave & Market Square",
+            "language": "nl"
+          },
+          {
+            "text": "Forbes Ave & Market Square",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4407732,
+        "lon": -80.0033121,
+        "address": "Forbes & Market",
+        "post_code": "15222",
+        "capacity": 19,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "23",
+        "external_id": "ff662594-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "North Shore Trail & Fort Duquesne Bridge",
+            "language": "en"
+          },
+          {
+            "text": "North Shore Trail & Fort Duquesne Bridge",
+            "language": "fr"
+          },
+          {
+            "text": "North Shore Trail & Fort Duquesne Bridge",
+            "language": "nl"
+          },
+          {
+            "text": "North Shore Trail & Fort Duquesne Bridge",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4458,
+        "lon": -80.0091,
+        "address": "North Shore Trail",
+        "post_code": "121212",
+        "capacity": 23,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 11
+          }
+        ],
+        "station_id": "24",
+        "external_id": "ff66279a-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Penn Ave & 33rd St",
+            "language": "en"
+          },
+          {
+            "text": "Penn Ave & 33rd St",
+            "language": "fr"
+          },
+          {
+            "text": "Penn Ave & 33rd St",
+            "language": "nl"
+          },
+          {
+            "text": "Penn Ave & 33rd St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.462,
+        "lon": -79.9683,
+        "address": "33rd & Penn",
+        "post_code": "121212",
+        "capacity": 11,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "25",
+        "external_id": "ff66299b-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Penn Ave & S Whitfield St",
+            "language": "en"
+          },
+          {
+            "text": "Penn Ave & S Whitfield St",
+            "language": "fr"
+          },
+          {
+            "text": "Penn Ave & S Whitfield St",
+            "language": "nl"
+          },
+          {
+            "text": "Penn Ave & S Whitfield St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4616,
+        "lon": -79.9257,
+        "address": "Penn Ave & S Whitfield",
+        "post_code": "1212",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "26",
+        "external_id": "ff662c38-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "S 27th St & Sidney St. (Southside Works)",
+            "language": "en"
+          },
+          {
+            "text": "S 27th St & Sidney St. (Southside Works)",
+            "language": "fr"
+          },
+          {
+            "text": "S 27th St & Sidney St. (Southside Works)",
+            "language": "nl"
+          },
+          {
+            "text": "S 27th St & Sidney St. (Southside Works)",
+            "language": "es"
+          }
+        ],
+        "lat": 40.428067,
+        "lon": -79.965886,
+        "address": "S 27th St & Sidney St. (Southside Works)",
+        "post_code": "15203",
+        "capacity": 23,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "27",
+        "external_id": "ff662e8a-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "W Station Square Dr & Bessemer Court",
+            "language": "en"
+          },
+          {
+            "text": "W Station Square Dr & Bessemer Court",
+            "language": "fr"
+          },
+          {
+            "text": "W Station Square Dr & Bessemer Court",
+            "language": "nl"
+          },
+          {
+            "text": "W Station Square Dr & Bessemer Court",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4338,
+        "lon": -80.0047,
+        "address": "W Station Square Dr & Bessemer Court",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "28",
+        "external_id": "ff663091-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Fifth Ave & S Bouquet St",
+            "language": "en"
+          },
+          {
+            "text": "Fifth Ave & S Bouquet St",
+            "language": "fr"
+          },
+          {
+            "text": "Fifth Ave & S Bouquet St",
+            "language": "nl"
+          },
+          {
+            "text": "Fifth Ave & S Bouquet St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4422,
+        "lon": -79.9576,
+        "address": "Fifth Ave & N Bouquet",
+        "post_code": "121212",
+        "capacity": 23,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 27
+          }
+        ],
+        "station_id": "29",
+        "external_id": "ff663288-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Filmore St & S Bellefield Ave",
+            "language": "en"
+          },
+          {
+            "text": "Filmore St & S Bellefield Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Filmore St & S Bellefield Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Filmore St & S Bellefield Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.445145301354,
+        "lon": -79.9510833862305,
+        "address": "Filmore St & S Bellefield Ave",
+        "post_code": "12121",
+        "capacity": 27,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "30",
+        "external_id": "ff663485-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Shady Ave & Ellsworth Ave",
+            "language": "en"
+          },
+          {
+            "text": "Shady Ave & Ellsworth Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Shady Ave & Ellsworth Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Shady Ave & Ellsworth Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4591811,
+        "lon": -79.9219961,
+        "address": "Shady & Ellsworth",
+        "post_code": "15206",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "31",
+        "external_id": "ff66368c-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "First Ave & B St",
+            "language": "en"
+          },
+          {
+            "text": "First Ave & B St",
+            "language": "fr"
+          },
+          {
+            "text": "First Ave & B St",
+            "language": "nl"
+          },
+          {
+            "text": "First Ave & B St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.435922,
+        "lon": -79.997551,
+        "address": "First & B",
+        "post_code": "15219",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "32",
+        "external_id": "ff663ae8-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Ross St & Fourth Ave",
+            "language": "en"
+          },
+          {
+            "text": "Ross St & Fourth Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Ross St & Fourth Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Ross St & Fourth Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4377006231878,
+        "lon": -79.996480677771,
+        "address": "Ross & Fourth Ave",
+        "post_code": "15219",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "33",
+        "external_id": "ff663ce3-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Schenley Dr & Schenley Dr Ext",
+            "language": "en"
+          },
+          {
+            "text": "Schenley Dr & Schenley Dr Ext",
+            "language": "fr"
+          },
+          {
+            "text": "Schenley Dr & Schenley Dr Ext",
+            "language": "nl"
+          },
+          {
+            "text": "Schenley Dr & Schenley Dr Ext",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4423713,
+        "lon": -79.9516881,
+        "address": "4125 Schenley Drive",
+        "post_code": "15213",
+        "capacity": 19,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "Carnegie Library Main",
+            "language": "en"
+          },
+          {
+            "text": "Carnegie Library Main",
+            "language": "fr"
+          },
+          {
+            "text": "Carnegie Library Main",
+            "language": "nl"
+          },
+          {
+            "text": "Carnegie Library Main",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 18
+          }
+        ],
+        "station_id": "34",
+        "external_id": "ff663f0b-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "N Dithridge St & Centre Ave",
+            "language": "en"
+          },
+          {
+            "text": "N Dithridge St & Centre Ave",
+            "language": "fr"
+          },
+          {
+            "text": "N Dithridge St & Centre Ave",
+            "language": "nl"
+          },
+          {
+            "text": "N Dithridge St & Centre Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.451281,
+        "lon": -79.952982,
+        "address": "273 North Dithridge Street",
+        "post_code": "15213",
+        "capacity": 18,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "35",
+        "external_id": "ff664104-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Butler St & 36th St",
+            "language": "en"
+          },
+          {
+            "text": "Butler St & 36th St",
+            "language": "fr"
+          },
+          {
+            "text": "Butler St & 36th St",
+            "language": "nl"
+          },
+          {
+            "text": "Butler St & 36th St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4651438031098,
+        "lon": -79.9654132833977,
+        "address": "Butler St & 36th St",
+        "post_code": "15201",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "36",
+        "external_id": "ff6642f5-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "S Pacific Ave & Penn Ave",
+            "language": "en"
+          },
+          {
+            "text": "S Pacific Ave & Penn Ave",
+            "language": "fr"
+          },
+          {
+            "text": "S Pacific Ave & Penn Ave",
+            "language": "nl"
+          },
+          {
+            "text": "S Pacific Ave & Penn Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4641041217729,
+        "lon": -79.9400555681229,
+        "address": "5119 Penn Avenue",
+        "post_code": "15224",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "37",
+        "external_id": "ff6644fc-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "S Negley Ave & Centre Ave",
+            "language": "en"
+          },
+          {
+            "text": "S Negley Ave & Centre Ave",
+            "language": "fr"
+          },
+          {
+            "text": "S Negley Ave & Centre Ave",
+            "language": "nl"
+          },
+          {
+            "text": "S Negley Ave & Centre Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4573163,
+        "lon": -79.9343309,
+        "address": "Negley Ave & Centre Ave",
+        "post_code": "15232",
+        "capacity": 15,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "38",
+        "external_id": "ff6646f1-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Allequippa St & Darragh St",
+            "language": "en"
+          },
+          {
+            "text": "Allequippa St & Darragh St",
+            "language": "fr"
+          },
+          {
+            "text": "Allequippa St & Darragh St",
+            "language": "nl"
+          },
+          {
+            "text": "Allequippa St & Darragh St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.443591,
+        "lon": -79.965456,
+        "address": "350 Robinson Street",
+        "post_code": "15213",
+        "capacity": 23,
+        "is_charging_station": true,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "Trees Hall",
+            "language": "en"
+          },
+          {
+            "text": "Trees Hall",
+            "language": "fr"
+          },
+          {
+            "text": "Trees Hall",
+            "language": "nl"
+          },
+          {
+            "text": "Trees Hall",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "39",
+        "external_id": "ff665019-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "S 12th St & E Carson St",
+            "language": "en"
+          },
+          {
+            "text": "S 12th St & E Carson St",
+            "language": "fr"
+          },
+          {
+            "text": "S 12th St & E Carson St",
+            "language": "nl"
+          },
+          {
+            "text": "S 12th St & E Carson St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4285997029226,
+        "lon": -79.9863711512901,
+        "address": "S 12th St & E Carson St",
+        "cross_street": "S 12th St & E Carson St",
+        "post_code": "15203",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "40",
+        "external_id": "ff665330-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Penn Ave & 7th St",
+            "language": "en"
+          },
+          {
+            "text": "Penn Ave & 7th St",
+            "language": "fr"
+          },
+          {
+            "text": "Penn Ave & 7th St",
+            "language": "nl"
+          },
+          {
+            "text": "Penn Ave & 7th St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.443310169091,
+        "lon": -79.9999958798892,
+        "address": "Penn Ave & 7th St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "41",
+        "external_id": "ff66556f-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "S 22nd St & Sidney St",
+            "language": "en"
+          },
+          {
+            "text": "S 22nd St & Sidney St",
+            "language": "fr"
+          },
+          {
+            "text": "S 22nd St & Sidney St",
+            "language": "nl"
+          },
+          {
+            "text": "S 22nd St & Sidney St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4292122212108,
+        "lon": -79.9745345629074,
+        "address": "S 22nd St & Sidney St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "42",
+        "external_id": "ff6659f4-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Second Ave & Tecumseh St",
+            "language": "en"
+          },
+          {
+            "text": "Second Ave & Tecumseh St",
+            "language": "fr"
+          },
+          {
+            "text": "Second Ave & Tecumseh St",
+            "language": "nl"
+          },
+          {
+            "text": "Second Ave & Tecumseh St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4088572936115,
+        "lon": -79.9436837948181,
+        "address": "Second Ave & Tecumseh St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "43",
+        "external_id": "ff665c00-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Eliza St & Lytle St",
+            "language": "en"
+          },
+          {
+            "text": "Eliza St & Lytle St",
+            "language": "fr"
+          },
+          {
+            "text": "Eliza St & Lytle St",
+            "language": "nl"
+          },
+          {
+            "text": "Eliza St & Lytle St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4134809838224,
+        "lon": -79.9482542789795,
+        "address": "Eliza St & Lytle St",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "44",
+        "external_id": "ff665f30-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Hamilton Ave & Fifth Ave",
+            "language": "en"
+          },
+          {
+            "text": "Hamilton Ave & Fifth Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Hamilton Ave & Fifth Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Hamilton Ave & Fifth Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4575697908311,
+        "lon": -79.9099523342468,
+        "address": "Hamilton Ave & Fifth Ave",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "45",
+        "external_id": "ff6661b6-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "N Braddock Ave & Hamilton Ave",
+            "language": "en"
+          },
+          {
+            "text": "N Braddock Ave & Hamilton Ave",
+            "language": "fr"
+          },
+          {
+            "text": "N Braddock Ave & Hamilton Ave",
+            "language": "nl"
+          },
+          {
+            "text": "N Braddock Ave & Hamilton Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4530103612023,
+        "lon": -79.8912036932327,
+        "address": "N Braddock Ave & Hamilton Ave",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "46",
+        "external_id": "ff6663d3-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Bennett St & N Homewood Ave",
+            "language": "en"
+          },
+          {
+            "text": "Bennett St & N Homewood Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Bennett St & N Homewood Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Bennett St & N Homewood Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4566220240671,
+        "lon": -79.8975031968811,
+        "address": "Bennett St / N Homewood Ave",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "47",
+        "external_id": "ff6665e5-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "17th St & Penn Ave",
+            "language": "en"
+          },
+          {
+            "text": "17th St & Penn Ave",
+            "language": "fr"
+          },
+          {
+            "text": "17th St & Penn Ave",
+            "language": "nl"
+          },
+          {
+            "text": "17th St & Penn Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4496263051759,
+        "lon": -79.9859178579666,
+        "address": "17th St & Penn Ave",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "48",
+        "external_id": "ff6667e4-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Centre Ave & S Millvale Ave",
+            "language": "en"
+          },
+          {
+            "text": "Centre Ave & S Millvale Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Centre Ave & S Millvale Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Centre Ave & S Millvale Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4532053896158,
+        "lon": -79.9478322763483,
+        "address": "S Millvale Ave & Centre Ave",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 23
+          }
+        ],
+        "station_id": "49",
+        "external_id": "ff6669ec-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Technology Dr & Bates St",
+            "language": "en"
+          },
+          {
+            "text": "Technology Dr & Bates St",
+            "language": "fr"
+          },
+          {
+            "text": "Technology Dr & Bates St",
+            "language": "nl"
+          },
+          {
+            "text": "Technology Dr & Bates St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.430512783211,
+        "lon": -79.9599889434197,
+        "address": "Technology Dr & Bates St",
+        "post_code": "121212",
+        "capacity": 23,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "50",
+        "external_id": "ff666be7-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Atwood St & Bates St",
+            "language": "en"
+          },
+          {
+            "text": "Atwood St & Bates St",
+            "language": "fr"
+          },
+          {
+            "text": "Atwood St & Bates St",
+            "language": "nl"
+          },
+          {
+            "text": "Atwood St & Bates St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4379869540702,
+        "lon": -79.9537045276978,
+        "address": "Atwood St & Bates St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "51",
+        "external_id": "ff666de3-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Coltart Ave & Forbes Ave",
+            "language": "en"
+          },
+          {
+            "text": "Coltart Ave & Forbes Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Coltart Ave & Forbes Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Coltart Ave & Forbes Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4390117551209,
+        "lon": -79.9602920330383,
+        "address": "Coltart Ave & Forbes Ave",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "52",
+        "external_id": "ff667248-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Bedford Ave & Memory Ln",
+            "language": "en"
+          },
+          {
+            "text": "Bedford Ave & Memory Ln",
+            "language": "fr"
+          },
+          {
+            "text": "Bedford Ave & Memory Ln",
+            "language": "nl"
+          },
+          {
+            "text": "Bedford Ave & Memory Ln",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4483608122211,
+        "lon": -79.9782681978561,
+        "address": "Bedford Ave & Memory Ln",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "53",
+        "external_id": "ff66745f-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Centre Ave & Heldman St",
+            "language": "en"
+          },
+          {
+            "text": "Centre Ave & Heldman St",
+            "language": "fr"
+          },
+          {
+            "text": "Centre Ave & Heldman St",
+            "language": "nl"
+          },
+          {
+            "text": "Centre Ave & Heldman St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4428413514563,
+        "lon": -79.9816155947067,
+        "address": "Centre Ave & Heldman St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "54",
+        "external_id": "ff667819-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "W Ohio St & Brighton Rd",
+            "language": "en"
+          },
+          {
+            "text": "W Ohio St & Brighton Rd",
+            "language": "fr"
+          },
+          {
+            "text": "W Ohio St & Brighton Rd",
+            "language": "nl"
+          },
+          {
+            "text": "W Ohio St & Brighton Rd",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4524674541611,
+        "lon": -80.0138718403198,
+        "address": "W Ohio St & Brighton Rd",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "55",
+        "external_id": "ff667a2f-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Brighton Rd & Pennsylvania Ave",
+            "language": "en"
+          },
+          {
+            "text": "Brighton Rd & Pennsylvania Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Brighton Rd & Pennsylvania Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Brighton Rd & Pennsylvania Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4564024103847,
+        "lon": -80.0153926528313,
+        "address": "Brighton Rd & Pennsylvania Ave",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 15
+          }
+        ],
+        "station_id": "56",
+        "external_id": "ff667c43-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Rosetta St & N Aiken Ave",
+            "language": "en"
+          },
+          {
+            "text": "Rosetta St & N Aiken Ave",
+            "language": "fr"
+          },
+          {
+            "text": "Rosetta St & N Aiken Ave",
+            "language": "nl"
+          },
+          {
+            "text": "Rosetta St & N Aiken Ave",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4670182950645,
+        "lon": -79.9352321542122,
+        "address": "Rosetta St & N Aiken Ave",
+        "post_code": "121212",
+        "capacity": 15,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "57",
+        "external_id": "ff667e40-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "52nd St & Butler St",
+            "language": "en"
+          },
+          {
+            "text": "52nd St & Butler St",
+            "language": "fr"
+          },
+          {
+            "text": "52nd St & Butler St",
+            "language": "nl"
+          },
+          {
+            "text": "52nd St & Butler St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4802827313897,
+        "lon": -79.954286567054,
+        "address": "52nd St & Butler St",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "58",
+        "external_id": "ff668045-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "W North Ave & Federal St",
+            "language": "en"
+          },
+          {
+            "text": "W North Ave & Federal St",
+            "language": "fr"
+          },
+          {
+            "text": "W North Ave & Federal St",
+            "language": "nl"
+          },
+          {
+            "text": "W North Ave & Federal St",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4552676644965,
+        "lon": -80.0071234024384,
+        "address": "W North Ave & Federal St",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 19
+          }
+        ],
+        "station_id": "59",
+        "external_id": "ff66824f-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Forbes Ave at TCS Hall (CMU Campus)",
+            "language": "en"
+          },
+          {
+            "text": "Forbes Ave at TCS Hall (CMU Campus)",
+            "language": "fr"
+          },
+          {
+            "text": "Forbes Ave at TCS Hall (CMU Campus)",
+            "language": "nl"
+          },
+          {
+            "text": "Forbes Ave at TCS Hall (CMU Campus)",
+            "language": "es"
+          }
+        ],
+        "lat": 40.444654005418,
+        "lon": -79.9475354469635,
+        "address": "Forbes Ave at TCS Hall (CMU Campus)",
+        "post_code": "121212",
+        "capacity": 19,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      },
+      {
+        "vehicle_types_capacity": [
+          {
+            "vehicle_type_ids": [],
+            "count": 0
+          }
+        ],
+        "vehicle_docks_capacity": [
+          {
+            "vehicle_type_ids": [
+              "ASTRO",
+              "BOOST",
+              "CHLOE",
+              "COSMO",
+              "EFIT",
+              "FIT",
+              "ICONIC",
+              "METRO"
+            ],
+            "count": 18
+          }
+        ],
+        "station_id": "60",
+        "external_id": "ff668c9d-df87-11ef-9b36-022bb08559cf",
+        "name": [
+          {
+            "text": "Wilkinsburg Park & Ride",
+            "language": "en"
+          },
+          {
+            "text": "Wilkinsburg Park & Ride",
+            "language": "fr"
+          },
+          {
+            "text": "Wilkinsburg Park & Ride",
+            "language": "nl"
+          },
+          {
+            "text": "Wilkinsburg Park & Ride",
+            "language": "es"
+          }
+        ],
+        "lat": 40.4469075070452,
+        "lon": -79.8886448658325,
+        "address": "Wilkinsburg Park & Ride",
+        "post_code": "121212",
+        "capacity": 18,
+        "is_charging_station": false,
+        "rental_methods": [
+          "key",
+          "transitcard",
+          "creditcard",
+          "phone"
+        ],
+        "is_virtual_station": false,
+        "short_name": [
+          {
+            "text": "",
+            "language": "en"
+          },
+          {
+            "text": "",
+            "language": "fr"
+          },
+          {
+            "text": "",
+            "language": "nl"
+          },
+          {
+            "text": "",
+            "language": "es"
+          }
+        ],
+        "rental_uris": {
+
+        }
+      }
+    ]
+  },
+  "version": "3.0"
+}
