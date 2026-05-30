@@ -3,7 +3,8 @@ import networkx as nx
 from collections import Counter
 from pyvis.network import Network
 
-TRIPS_PATH = "combined_trips_april27.csv"
+TRIPS_PATH    = "combined_trips_april27.csv"
+STATS_PATH    = r"..\Station Sample Data\STATION_STATS_EXPORT-1676.csv"
 
 G = nx.MultiDiGraph()
 
@@ -35,50 +36,93 @@ with open(TRIPS_PATH, encoding="utf-8") as f:
             closed_status=row["Closed Status"],
         )
 
+# Load end-of-day station capacity from station stats (last record per station on Apr 27)
+station_capacity = {}
+with open(STATS_PATH, encoding="utf-8") as f:
+    for row in csv.DictReader(f):
+        if row["Date Time"].startswith("4/27/2026"):
+            sid = str(int(float(row["Station ID"])))
+            station_capacity[sid] = {
+                "capacity": row["Total Docks Installed"].strip(),
+                "bikes_eod": row["Total Bikes At Station Per Model"].strip(),
+                "avail_docks_eod": row["Number of Available Docks"].strip(),
+            }
+
+def cap_str(node_id):
+    c = station_capacity.get(node_id)
+    if not c:
+        return "  capacity: n/a"
+    return f"  capacity: {c['capacity']} docks  |  bikes at 23:59: {c['bikes_eod']}  |  open docks: {c['avail_docks_eod']}"
+
+def bar(value, max_val, width=30):
+    filled = round(value / max_val * width)
+    return "[" + "#" * filled + "-" * (width - filled) + "]"
+
 # --- Summary statistics ---
-print(f"Nodes (stations): {G.number_of_nodes()}")
-print(f"Edges (trips):    {G.number_of_edges()}")
-print()
+print("=" * 60)
+print(f"  POGOH April 27 — Graph Summary")
+print("=" * 60)
+print(f"  Stations: {G.number_of_nodes()}   |   Trips: {G.number_of_edges()}")
 
-# Degree stats
-out_degrees = sorted(G.out_degree(), key=lambda x: x[1], reverse=True)
-in_degrees  = sorted(G.in_degree(),  key=lambda x: x[1], reverse=True)
-
-print("Top 5 departure stations (out-degree):")
-for node_id, deg in out_degrees[:5]:
-    print(f"  [{node_id}] {G.nodes[node_id]['name']}  —  {deg} trips out")
-
-print()
-print("Top 5 arrival stations (in-degree):")
-for node_id, deg in in_degrees[:5]:
-    print(f"  [{node_id}] {G.nodes[node_id]['name']}  —  {deg} trips in")
-
-print()
-
-# Rider type breakdown per edge
 rider_counts = Counter(data["rider_type"] for _, _, data in G.edges(data=True))
-print("Trips by rider type:")
-for rtype, count in sorted(rider_counts.items()):
-    print(f"  {rtype}: {count}")
+print(f"  " + "  ".join(f"{t}: {c}" for t, c in sorted(rider_counts.items())))
 
-print()
-
-# Average trip duration
 durations = [data["duration"] for _, _, data in G.edges(data=True) if data["duration"] is not None]
-print(f"Avg trip duration: {sum(durations) / len(durations):.0f} sec  ({sum(durations) / len(durations) / 60:.1f} min)")
-print(f"Min: {min(durations)} sec  |  Max: {max(durations)} sec")
+print(f"  Avg duration: {sum(durations)/len(durations)/60:.1f} min  |  Median: {sorted(durations)[len(durations)//2]//60} min")
 
-print()
-
-# Connectivity
 wcc = nx.number_weakly_connected_components(G)
 scc = nx.number_strongly_connected_components(G)
-print(f"Weakly connected components:  {wcc}")
-print(f"Strongly connected components: {scc}")
-
-# Self-loops (trips that start and end at the same station)
 self_loops = sum(1 for u, v in G.edges() if u == v)
-print(f"Self-loops (round trips):     {self_loops}")
+print(f"  Weakly connected components: {wcc}  |  Strongly: {scc}  |  Round trips: {self_loops}")
+
+# Degree tables
+out_degrees = sorted(G.out_degree(), key=lambda x: x[1], reverse=True)
+in_degrees  = sorted(G.in_degree(),  key=lambda x: x[1], reverse=True)
+max_out = out_degrees[0][1]
+max_in  = in_degrees[0][1]
+
+print()
+print("=" * 60)
+print("  TOP 10 — DEPARTURES")
+print("=" * 60)
+for rank, (node_id, out_deg) in enumerate(out_degrees[:10], 1):
+    in_deg   = G.in_degree(node_id)
+    net_flow = out_deg - in_deg
+    name     = G.nodes[node_id]["name"]
+    print(f"  {rank:2}. [{node_id:>3}] {name}")
+    print(f"      {bar(out_deg, max_out)} {out_deg} out  |  {in_deg} in  |  net: {net_flow:+d}")
+    print(cap_str(node_id))
+    print()
+
+print("=" * 60)
+print("  TOP 10 — ARRIVALS")
+print("=" * 60)
+for rank, (node_id, in_deg) in enumerate(in_degrees[:10], 1):
+    out_deg  = G.out_degree(node_id)
+    net_flow = out_deg - in_deg
+    name     = G.nodes[node_id]["name"]
+    print(f"  {rank:2}. [{node_id:>3}] {name}")
+    print(f"      {bar(in_deg, max_in)} {in_deg} in  |  {out_deg} out  |  net: {net_flow:+d}")
+    print(cap_str(node_id))
+    print()
+
+print("=" * 60)
+print("  TOP 10 -- NET FLOW (departures - arrivals)")
+print("=" * 60)
+net_flows = sorted(
+    ((nid, G.out_degree(nid) - G.in_degree(nid)) for nid in G.nodes()),
+    key=lambda x: abs(x[1]), reverse=True
+)
+max_net = abs(net_flows[0][1])
+for rank, (node_id, net_flow) in enumerate(net_flows[:10], 1):
+    out_deg = G.out_degree(node_id)
+    in_deg  = G.in_degree(node_id)
+    name    = G.nodes[node_id]["name"]
+    direction = "source ▲" if net_flow > 0 else "sink   ▼"
+    print(f"  {rank:2}. [{node_id:>3}] {name}  ({direction})")
+    print(f"      {bar(abs(net_flow), max_net)} net {net_flow:+d}  ({out_deg} out, {in_deg} in)")
+    print(cap_str(node_id))
+    print()
 
 # --- Visualization ---
 RIDER_COLORS = {"MEMBER": "#4a90d9", "CASUAL": "#27ae60", "TECH": "#e67e22"}

@@ -6,6 +6,7 @@
 # Ignore all files with an extension
 # *.xlsx
 *.csv
+*.json
 
 
 # # Ignore a whole folder
