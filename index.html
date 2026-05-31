@@ -2,348 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyanotype Renderer</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #111;
-      color: #ccc;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 14px;
-      padding: 32px;
-      min-height: 100vh;
-    }
-
-    h1 {
-      font-size: 18px;
-      font-weight: normal;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #7ab8c8;
-      margin-bottom: 28px;
-    }
-
-    .controls {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 36px;
-    }
-
-    input[type="file"] {
-      background: #1c1c1c;
-      border: 1px solid #333;
-      color: #aaa;
-      padding: 6px 10px;
-      cursor: pointer;
-    }
-
-    button {
-      background: #1c2c36;
-      border: 1px solid #3a6f88;
-      color: #7ab8c8;
-      padding: 8px 18px;
-      cursor: pointer;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-family: inherit;
-      font-size: 13px;
-      transition: background 0.15s;
-    }
-
-    button:hover:not(:disabled) { background: #22404f; }
-    button:disabled { opacity: 0.35; cursor: default; }
-
-    .stages {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-    }
-
-    .stage {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .stage-label {
-      font-size: 11px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #555;
-      margin-bottom: 10px;
-    }
-
-    canvas {
-      display: block;
-      max-width: 100%;
-      border: 1px solid #222;
-      background: #0a0a0a;
-    }
-
-    .status {
-      margin-top: 10px;
-      font-size: 12px;
-      color: #444;
-      min-height: 16px;
-    }
-
-    .status.ready { color: #7ab8c8; }
-
-    .stage--anim { border-left: 1px solid #222; padding-left: 32px; }
-    .stage--anim .stage-label { color: #4a7a62; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cyanotype</title>
+  <link rel="stylesheet" href="main.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
 </head>
 <body>
-  <h1>Cyanotype Renderer</h1>
 
-  <div class="controls">
-    <input type="file" id="fileInput" accept="image/*" />
-    <button id="btnNegative" disabled>Render Negative</button>
-    <button id="btnCyanotype" disabled>Render Cyanotype</button>
-    <button id="btnAnimate" disabled>Animate Development</button>
-  </div>
-
-  <div class="stages">
-    <div class="stage">
-      <div class="stage-label">Source</div>
-      <canvas id="canvasSource"></canvas>
-      <div class="status" id="statusSource"></div>
-    </div>
-    <div class="stage">
-      <div class="stage-label">Negative</div>
-      <canvas id="canvasNegative"></canvas>
-      <div class="status" id="statusNegative"></div>
-    </div>
-    <div class="stage">
-      <div class="stage-label">Cyanotype</div>
-      <canvas id="canvasCyanotype"></canvas>
-      <div class="status" id="statusCyanotype"></div>
-    </div>
-    <div class="stage stage--anim">
-      <div class="stage-label">Animation</div>
-      <canvas id="canvasAnim"></canvas>
-      <div class="status" id="statusAnim"></div>
+  <!-- Screen 1: Upload -->
+  <div id="screen-upload" class="screen">
+    <div id="upload-area">
+      <p>Tap to upload a photo</p>
+      <input type="file" id="upload-input" accept="image/*" capture="environment" />
     </div>
   </div>
 
-  <script type="module">
-    import { renderNegative, renderCyanotype } from "./renderer.js";
+  <!-- Screen 2: Studio -->
+  <div id="screen-studio" class="screen">
+    <div id="studio-topbar">
+      <button id="btn-next-studio">Next →</button>
+    </div>
+    <div id="canvas-container">
+      <canvas id="studioCanvas"></canvas>
+    </div>
+    <nav id="layer-panel">
+      <div id="layer-list"></div>
+    </nav>
+    <div id="studio-bottombar">
+      <button id="btn-add-sticker">+ Sticker</button>
+      <input type="file" id="sticker-input" accept="image/png,image/gif,image/webp" />
+    </div>
+    <div id="trash-indicator">
+      <div class="trash-icon">&#x2715;</div>
+      <div class="trash-label">Release to delete</div>
+    </div>
+  </div>
 
-    const fileInput     = document.getElementById("fileInput");
-    const btnNegative   = document.getElementById("btnNegative");
-    const btnCyanotype  = document.getElementById("btnCyanotype");
-    const btnAnimate    = document.getElementById("btnAnimate");
-    const canvasSource  = document.getElementById("canvasSource");
-    const canvasNeg     = document.getElementById("canvasNegative");
-    const canvasCyan    = document.getElementById("canvasCyanotype");
-    const canvasAnim    = document.getElementById("canvasAnim");
-    const statusSource  = document.getElementById("statusSource");
-    const statusNeg     = document.getElementById("statusNegative");
-    const statusCyan    = document.getElementById("statusCyanotype");
-    const statusAnim    = document.getElementById("statusAnim");
+  <!-- Screen 3: Negative Preview -->
+  <div id="screen-negative" class="screen preview-screen">
+    <div class="screen-label">Negative</div>
+    <canvas id="negative-canvas"></canvas>
+    <button id="btn-next-negative" class="btn-next">Next →</button>
+  </div>
 
-    let sourceCanvas  = null;
-    let negativeCanvas = null;
-    let cyanImageData  = null; // captured after cyanotype render
-    let animFrame      = null; // current rAF handle
+  <!-- Screen 4: Darkroom -->
+  <div id="screen-darkroom" class="screen">
+    <span id="darkroom-text">developing…</span>
+  </div>
 
-    fileInput.addEventListener("change", () => {
-      const file = fileInput.files[0];
-      if (!file) return;
+  <!-- Screen 5: Final -->
+  <div id="screen-final" class="screen preview-screen">
+    <div class="screen-label">Cyanotype</div>
+    <canvas id="final-canvas"></canvas>
+    <div class="final-actions">
+      <button id="btn-download">Download</button>
+      <button id="btn-start-over">Start Over</button>
+    </div>
+  </div>
 
-      const reader = new FileReader();
-      reader.addEventListener("load", (e) => {
-        const img = new Image();
-        img.addEventListener("load", () => {
-          canvasSource.width  = img.naturalWidth;
-          canvasSource.height = img.naturalHeight;
-          canvasSource.getContext("2d").drawImage(img, 0, 0);
-
-          sourceCanvas   = canvasSource;
-          negativeCanvas = null;
-          cyanImageData  = null;
-
-          if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
-
-          btnNegative.disabled  = false;
-          btnCyanotype.disabled = true;
-          btnAnimate.disabled   = true;
-
-          statusSource.textContent = `${img.naturalWidth} × ${img.naturalHeight}`;
-          statusSource.className = "status ready";
-          statusNeg.textContent  = "";
-          statusNeg.className    = "status";
-          statusCyan.textContent = "";
-          statusCyan.className   = "status";
-          statusAnim.textContent = "";
-          statusAnim.className   = "status";
-
-          canvasNeg.width  = 0;
-          canvasCyan.width = 0;
-          canvasAnim.width = 0;
-        });
-        img.src = e.target.result;
-      });
-      reader.readAsDataURL(file);
-    });
-
-    btnNegative.addEventListener("click", () => {
-      if (!sourceCanvas) return;
-
-      btnNegative.disabled = true;
-      statusNeg.textContent = "Processing…";
-      statusNeg.className = "status";
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          negativeCanvas = renderNegative(sourceCanvas);
-
-          canvasNeg.width  = negativeCanvas.width;
-          canvasNeg.height = negativeCanvas.height;
-          canvasNeg.getContext("2d").drawImage(negativeCanvas, 0, 0);
-
-          btnNegative.disabled  = false;
-          btnCyanotype.disabled = false;
-          statusNeg.textContent = "Done — output_negative.png downloaded";
-          statusNeg.className   = "status ready";
-        });
-      });
-    });
-
-    btnCyanotype.addEventListener("click", () => {
-      if (!negativeCanvas) return;
-
-      btnCyanotype.disabled = true;
-      statusCyan.textContent = "Processing…";
-      statusCyan.className = "status";
-
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          const cyanCanvas = renderCyanotype(negativeCanvas);
-
-          canvasCyan.width  = cyanCanvas.width;
-          canvasCyan.height = cyanCanvas.height;
-          canvasCyan.getContext("2d").drawImage(cyanCanvas, 0, 0);
-
-          // Capture pixel data for the animation step
-          cyanImageData = cyanCanvas.getContext("2d")
-            .getImageData(0, 0, cyanCanvas.width, cyanCanvas.height);
-
-          btnCyanotype.disabled = false;
-          btnAnimate.disabled   = false;
-          statusCyan.textContent = "Done — output_cyanotype.png downloaded";
-          statusCyan.className   = "status ready";
-
-          // Reset animation panel when a new cyanotype is produced
-          canvasAnim.width  = 0;
-          statusAnim.textContent = "Ready to animate";
-          statusAnim.className   = "status";
-        });
-      });
-    });
-
-    // ---------------------------------------------------------------------------
-    // Animation: reveal the cyanotype from darkest → lightest over 8 s,
-    // mimicking UV-exposed iron salts developing fastest in shadow regions.
-    // ---------------------------------------------------------------------------
-    btnAnimate.addEventListener("click", () => {
-      if (!cyanImageData) return;
-      if (animFrame) { cancelAnimationFrame(animFrame); animFrame = null; }
-
-      btnAnimate.disabled    = true;
-      statusAnim.textContent = "Preparing…";
-      statusAnim.className   = "status";
-
-      // Give the browser one frame to repaint the button before the heavy setup
-      requestAnimationFrame(() => {
-        const w           = cyanImageData.width;
-        const h           = cyanImageData.height;
-        const src         = cyanImageData.data;
-        const totalPixels = w * h;
-
-        // --- Counting sort (O(n)) — group pixel indices by luminance bucket 0-255
-        const bucketCount = new Int32Array(256);
-        const pixelLum    = new Uint8Array(totalPixels);
-
-        for (let i = 0; i < totalPixels; i++) {
-          const pi  = i * 4;
-          const lum = Math.round(0.2126 * src[pi] + 0.7152 * src[pi + 1] + 0.0722 * src[pi + 2]);
-          pixelLum[i]    = lum;
-          bucketCount[lum]++;
-        }
-
-        // Prefix-sum to find each bucket's starting position
-        const bucketStart = new Int32Array(256);
-        for (let l = 1; l < 256; l++) {
-          bucketStart[l] = bucketStart[l - 1] + bucketCount[l - 1];
-        }
-
-        // Fill the sorted-by-luminance index array (darkest first)
-        const sorted = new Uint32Array(totalPixels);
-        const pos    = bucketStart.slice();
-        for (let i = 0; i < totalPixels; i++) {
-          sorted[pos[pixelLum[i]]++] = i;
-        }
-
-        // --- Set up animation canvas, start as paper base color
-        canvasAnim.width  = w;
-        canvasAnim.height = h;
-        const ctx         = canvasAnim.getContext("2d");
-        const animImgData = ctx.createImageData(w, h);
-        const dst         = animImgData.data;
-
-        // TUNING: paper base color (matches cyanotype anchor at L=1.0)
-        const PAPER_R = 224, PAPER_G = 235, PAPER_B = 220;
-        for (let i = 0; i < totalPixels; i++) {
-          const pi    = i * 4;
-          dst[pi]     = PAPER_R;
-          dst[pi + 1] = PAPER_G;
-          dst[pi + 2] = PAPER_B;
-          dst[pi + 3] = 255;
-        }
-        ctx.putImageData(animImgData, 0, 0);
-
-        // --- rAF loop
-        // TUNING: animation duration in milliseconds
-        const DURATION  = 8000;
-        const startTime = performance.now();
-        let lastCount   = 0;
-
-        statusAnim.textContent = "Developing…";
-        statusAnim.className   = "status";
-
-        function frame(now) {
-          const progress    = Math.min((now - startTime) / DURATION, 1);
-          const targetCount = Math.floor(progress * totalPixels);
-
-          // Write only the pixels newly crossed this frame (each pixel written once)
-          for (let i = lastCount; i < targetCount; i++) {
-            const pi    = sorted[i] * 4;
-            dst[pi]     = src[pi];
-            dst[pi + 1] = src[pi + 1];
-            dst[pi + 2] = src[pi + 2];
-            dst[pi + 3] = src[pi + 3];
-          }
-          lastCount = targetCount;
-
-          ctx.putImageData(animImgData, 0, 0);
-
-          if (progress < 1) {
-            animFrame = requestAnimationFrame(frame);
-          } else {
-            animFrame = null;
-            btnAnimate.disabled    = false;
-            statusAnim.textContent = "Done — click again to replay";
-            statusAnim.className   = "status ready";
-          }
-        }
-
-        animFrame = requestAnimationFrame(frame);
-      });
-    });
-  </script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
