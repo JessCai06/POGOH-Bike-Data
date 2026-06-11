@@ -5,7 +5,7 @@
 
 # Ignore all files with an extension
 # *.xlsx
-*.csv
+Occupancy Data/
 *.json
 
 
