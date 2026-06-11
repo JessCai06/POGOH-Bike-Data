@@ -1,65 +1,787 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Cyanotype</title>
-  <link rel="stylesheet" href="main.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POGOH Dock Occupancy Dashboard</title>
+<style>
+  :root {
+    --paper: #FBFAF6;
+    --ink: #181A1F;
+    --ink-soft: #4A4E57;
+    --gold: #F5B40A;
+    --gold-deep: #C98F00;
+    --steel: #8A8F99;
+    --red: #D14B41;
+    --fit-blue: #4A6FA5;
+    --efit-teal: #2E8C7E;
+    --line: #E2E0D8;
+    --display: 'Futura', 'Avenir Next', 'Century Gothic', 'Trebuchet MS', sans-serif;
+    --mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--display);
+    min-height: 100vh;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 24px 48px; }
+
+  header { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+  h1 { font-size: 26px; font-weight: 600; letter-spacing: 0.04em; }
+  h1 .badge {
+    display: inline-block; background: var(--gold); color: var(--ink);
+    font-size: 13px; font-weight: 700; letter-spacing: 0.12em;
+    padding: 2px 8px; border-radius: 4px; vertical-align: 4px; margin-right: 10px;
+  }
+  .sub { color: var(--ink-soft); font-size: 13px; }
+
+  /* ---------- toolbar ---------- */
+  .toolbar {
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    padding: 14px 0 10px; border-bottom: 2px solid var(--ink); margin-bottom: 4px;
+  }
+  .tool { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-soft); }
+  .tool label { white-space: nowrap; }
+  .seg { display: flex; border: 1.5px solid var(--ink); border-radius: 6px; overflow: hidden; }
+  .seg button {
+    font-family: var(--display); font-size: 13px; padding: 5px 12px;
+    background: transparent; border: none; cursor: pointer; color: var(--ink);
+  }
+  .seg button + button { border-left: 1.5px solid var(--ink); }
+  .seg button.on { background: var(--ink); color: var(--paper); }
+  .seg button:focus-visible, input:focus-visible, select:focus-visible, .btn:focus-visible {
+    outline: 2px solid var(--gold-deep); outline-offset: 1px;
+  }
+  input[type="number"] {
+    width: 60px; font-family: var(--mono); font-size: 13px; padding: 5px 7px;
+    border: 1.5px solid var(--ink); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  select {
+    font-family: var(--mono); font-size: 13px; padding: 5px 8px; max-width: 280px;
+    border: 1.5px solid var(--ink); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  .btn {
+    font-family: var(--display); font-size: 13px; font-weight: 600; cursor: pointer;
+    padding: 6px 14px; border: 1.5px solid var(--ink); border-radius: 6px;
+    background: var(--ink); color: var(--paper);
+  }
+  .btn.ghost { background: transparent; color: var(--ink); }
+  .btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+  .spacer { flex: 1; }
+
+  /* ---------- chart area ---------- */
+  .stage { display: grid; grid-template-columns: 1fr 190px; gap: 18px; margin-top: 14px; }
+  @media (max-width: 820px) { .stage { grid-template-columns: 1fr; } }
+
+  .chart-card { position: relative; min-height: 460px; }
+  canvas { width: 100%; height: 460px; display: block; cursor: crosshair; touch-action: pan-y; }
+
+  .hint {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px; text-align: center;
+    color: var(--ink-soft); font-size: 14px; padding: 20px;
+  }
+  .hint strong { color: var(--ink); font-size: 17px; }
+  .hint .drop {
+    border: 2px dashed var(--steel); border-radius: 12px; padding: 28px 36px;
+    display: flex; flex-direction: column; gap: 12px; align-items: center;
+  }
+  .hint.dragover .drop { border-color: var(--gold-deep); background: #FFF7E0; }
+
+  .progress-bar {
+    width: 260px; height: 10px; background: #D8D5CC;
+    border-radius: 5px; overflow: hidden; border: 1px solid #C0BDB4;
+  }
+  .progress-fill {
+    height: 100%; background: var(--gold); border-radius: 5px;
+    width: 0%; transition: width 0.15s ease;
+  }
+  .progress-label {
+    font-family: var(--mono); font-size: 12px; color: var(--ink-soft);
+  }
+
+  /* ---------- key ---------- */
+  .key h2 { font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 10px; }
+  .key-item {
+    display: flex; align-items: center; gap: 9px; font-size: 13px;
+    padding: 6px 8px; border-radius: 6px; cursor: pointer; user-select: none;
+    border: 1px solid transparent;
+  }
+  .key-item:hover { background: #F1EFE7; }
+  .key-item.off { opacity: 0.35; }
+  .key-item .swatch { width: 26px; height: 0; border-top-width: 3px; border-top-style: solid; flex-shrink: 0; }
+  .key-item .swatch.dashed { border-top-style: dashed; }
+  .key-item .swatch.area { height: 10px; border: none; border-radius: 2px; }
+  .key-note { margin-top: 14px; font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); }
+  .key-stats { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 10px; font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); line-height: 1.7; }
+  .key-stats b { color: var(--ink); }
+
+  /* ---------- tooltip ---------- */
+  #tip {
+    position: fixed; pointer-events: none; z-index: 10; display: none;
+    background: var(--ink); color: var(--paper); border-radius: 8px;
+    padding: 9px 12px; font-family: var(--mono); font-size: 12px; line-height: 1.65;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25); max-width: 260px;
+  }
+  #tip .t-date { color: var(--gold); font-weight: 700; margin-bottom: 2px; }
+  #tip .t-row { display: flex; justify-content: space-between; gap: 16px; }
+
+  footer { margin-top: 18px; font-size: 12px; color: var(--ink-soft); display: flex; gap: 18px; flex-wrap: wrap; }
+  @media (prefers-reduced-motion: no-preference) {
+    .chart-card { transition: opacity 0.2s; }
+  }
+</style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <h1><span class="badge">POGOH</span>Dock Occupancy Dashboard</h1>
+    <span class="sub" id="loaded-sub">No data loaded</span>
+  </header>
 
-  <!-- Screen 1: Upload -->
-  <div id="screen-upload" class="screen">
-    <div id="upload-area">
-      <p>Tap to upload a photo</p>
-      <input type="file" id="upload-input" accept="image/*" capture="environment" />
+  <div class="toolbar">
+    <div class="tool">
+      <label for="station">Station</label>
+      <select id="station" disabled><option>ID | Name</option></select>
+    </div>
+    <div class="tool">
+      <label>Viewport scale</label>
+      <div class="seg" id="scale-seg" role="group" aria-label="Viewport scale">
+        <button data-scale="hours" class="on">hours</button>
+        <button data-scale="days">days</button>
+        <button data-scale="weeks">weeks</button>
+      </div>
+    </div>
+    <div class="tool">
+      <label for="lastn">Go to last</label>
+      <input type="number" id="lastn" min="1" value="14">
+      <span>days</span>
+      <button class="btn ghost" id="go-last">Go</button>
     </div>
   </div>
 
-  <!-- Screen 2: Studio -->
-  <div id="screen-studio" class="screen">
-    <div id="studio-topbar">
-      <button id="btn-next-studio">Next →</button>
+  <div class="stage">
+    <div class="chart-card" id="card">
+      <canvas id="chart" height="460"></canvas>
+      <div class="hint" id="hint">
+        <div class="drop">
+          <strong id="hint-title">Loading station data…</strong>
+          <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+          <span class="progress-label" id="hint-msg">Fetching from Condensed Occupancy Data folder.</span>
+        </div>
+      </div>
     </div>
-    <div id="canvas-container">
-      <canvas id="studioCanvas"></canvas>
-    </div>
-    <nav id="layer-panel">
-      <div id="layer-list"></div>
-    </nav>
-    <div id="studio-bottombar">
-      <button id="btn-add-sticker">+ Sticker</button>
-      <input type="file" id="sticker-input" accept="image/png,image/gif,image/webp" />
-    </div>
-    <div id="trash-indicator">
-      <div class="trash-icon">&#x2715;</div>
-      <div class="trash-label">Release to delete</div>
-    </div>
+
+    <aside class="key">
+      <h2>Key — click to toggle</h2>
+      <div id="key-list"></div>
+      <div class="key-stats" id="key-stats"></div>
+      <p class="key-note">Snapshots are drawn as step lines: each value holds until the next reading. The hatched band marks dock counts the station cannot physically exceed.</p>
+    </aside>
   </div>
 
-  <!-- Screen 3: Negative Preview -->
-  <div id="screen-negative" class="screen preview-screen">
-    <div class="screen-label">Negative</div>
-    <canvas id="negative-canvas"></canvas>
-    <button id="btn-next-negative" class="btn-next">Next →</button>
-  </div>
+  <footer>
+    <span>Drag chart to pan · double-click to reset view</span>
+    <span id="range-label"></span>
+  </footer>
+</div>
+<div id="tip"></div>
 
-  <!-- Screen 4: Darkroom -->
-  <div id="screen-darkroom" class="screen">
-    <span id="darkroom-text">developing…</span>
-  </div>
+<script>
+'use strict';
 
-  <!-- Screen 5: Final -->
-  <div id="screen-final" class="screen preview-screen">
-    <div class="screen-label">Cyanotype</div>
-    <canvas id="final-canvas"></canvas>
-    <div class="final-actions">
-      <button id="btn-download">Download</button>
-      <button id="btn-start-over">Start Over</button>
-    </div>
-  </div>
+/* ============================== data model ============================== */
 
-  <script type="module" src="js/app.js"></script>
+const SERIES_DEFS = [
+  { id: 'capacity',      label: 'Max capacity (docks)',                 color: '#181A1F', style: 'step-heavy', on: true },
+  { id: 'total',         label: 'Total bikes at station',               color: '#181A1F', style: 'step',       on: true },
+  { id: 'availFit',      label: 'Rentable fit (normal) bikes',          color: '#4A6FA5', style: 'area',       on: true },
+  { id: 'availEfit',     label: 'Rentable efit (electric) bikes',       color: '#E0A400', style: 'area',       on: true },
+  { id: 'unrentable',    label: 'Unrentable (awaiting operator pull)',  color: '#D14B41', style: 'area',       on: true },
+  { id: 'counterfactual',label: 'Without staff rebalancing',            color: '#181A1F', style: 'dashed',     on: true },
+  { id: 'expected',      label: 'Expected station size',                color: '#8A8F99', style: 'dashed',     on: false },
+  { id: 'faulty',        label: 'Faulty docks',                         color: '#D14B41', style: 'dashed',     on: false },
+];
+
+const state = {
+  stations: new Map(),   // id -> { id, name, points: [...] sorted by t }
+  current: null,
+  scale: 'hours',
+  view: null,            // [t0, t1] ms
+  series: JSON.parse(JSON.stringify(SERIES_DEFS)),
+  opTrips: {},           // station id -> [[epoch_s, delta, model], ...] operator rebalancing events
+};
+
+/* ============================== CSV parsing ============================== */
+
+function parseCSV(text) {
+  const rows = []; let row = []; let field = ''; let inQ = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQ) {
+      if (c === '"') { if (text[i+1] === '"') { field += '"'; i++; } else inQ = false; }
+      else field += c;
+    } else {
+      if (c === '"') inQ = true;
+      else if (c === ',') { row.push(field); field = ''; }
+      else if (c === '\n') { row.push(field); field = ''; if (row.length > 1 || row[0] !== '') rows.push(row); row = []; }
+      else if (c !== '\r') field += c;
+    }
+  }
+  if (field !== '' || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+function parseModels(s) {
+  const out = {};
+  if (!s) return out;
+  s.split(',').forEach(part => {
+    const m = part.trim().match(/^([\w-]+)\s*:\s*(\d+)/);
+    if (m) out[m[1]] = parseInt(m[2], 10);
+  });
+  return out;
+}
+
+function sumVals(obj) { return Object.values(obj).reduce((a, b) => a + b, 0); }
+
+function ingestFile(name, text) {
+  const rows = parseCSV(text);
+  if (rows.length < 2) return;
+  const header = rows[0].map(h => h.trim());
+  const col = n => header.indexOf(n);
+  const ci = {
+    dt: col('Date Time'), id: col('Station ID'),
+    expected: col('Expected Station Size'), docks: col('Total Docks Installed'),
+    faulty: col('Number of Faulty Docks'),
+    totalM: col('Total Bikes At Station Per Model'),
+    availM: col('Number of Available Bikes Per Model'),
+  };
+  if (ci.dt < 0 || ci.id < 0) return; // not an occupancy file
+
+  for (let r = 1; r < rows.length; r++) {
+    const row = rows[r];
+    if (row.length < header.length - 2) continue;
+    const t = new Date(row[ci.dt].replace(' ', 'T')).getTime();
+    if (isNaN(t)) continue;
+    const sid = row[ci.id].trim();
+    if (!state.stations.has(sid)) {
+      // try to pull a friendlier name from the filename, e.g. "station 12.csv"
+      const base = name.replace(/\.csv$/i, '');
+      state.stations.set(sid, { id: sid, name: base, points: [] });
+    }
+    const totalM = parseModels(row[ci.totalM]);
+    const availM = parseModels(row[ci.availM]);
+    // the "Inoperative Bikes Per Model" column is often blank even when bikes
+    // are unrentable — derive unrentable as total minus available instead
+    state.stations.get(sid).points.push({
+      t,
+      expected: num(row[ci.expected]),
+      capacity: num(row[ci.docks]),
+      faulty: num(row[ci.faulty]),
+      total: sumVals(totalM),
+      available: sumVals(availM),
+      models: totalM,
+      availM,
+    });
+  }
+}
+
+function num(v) { const n = parseFloat(v); return isNaN(n) ? 0 : n; }
+
+function finalizeIngest(preferredId) {
+  state.stations.forEach(s => s.points.sort((a, b) => a.t - b.t));
+  const ids = [...state.stations.keys()].sort((a, b) => (+a) - (+b));
+  const sel = document.getElementById('station');
+  sel.innerHTML = '';
+  ids.forEach(id => {
+    const s = state.stations.get(id);
+    const o = document.createElement('option');
+    o.value = id;
+    o.textContent = id + ' | ' + s.name;
+    sel.appendChild(o);
+  });
+  sel.disabled = false;
+  state.current = (preferredId && state.stations.has(preferredId)) ? preferredId : ids[0];
+  sel.value = state.current;
+  document.getElementById('loaded-sub').textContent =
+    ids.length + ' station' + (ids.length === 1 ? '' : 's') + ' loaded';
+  document.getElementById('hint').style.display = 'none';
+
+  // find the most recent timestamp across all stations and snap view to it
+  let latestT = 0;
+  state.stations.forEach(s => { if (s.points.length) latestT = Math.max(latestT, s.points[s.points.length - 1].t); });
+  const pts = currentPoints();
+  const t1 = latestT || (pts.length ? pts[pts.length - 1].t : Date.now());
+  state.scale = 'hours';
+  state.view = [t1 - 3 * 864e5, t1];
+  // sync scale button UI
+  document.querySelectorAll('#scale-seg button').forEach(b =>
+    b.classList.toggle('on', b.dataset.scale === 'hours'));
+
+  buildKey();
+  draw();
+}
+
+/* ============================== auto-load from Condensed Occupancy Data ============================== */
+
+const DATA_BASE = './Condensed%20Occupancy%20Data/';
+
+async function autoLoad() {
+  const sub = document.getElementById('loaded-sub');
+  const hintTitle = document.getElementById('hint-title');
+  const hintMsg = document.getElementById('hint-msg');
+  const fill = document.getElementById('progress-fill');
+  sub.textContent = 'Loading…';
+  try {
+    const manifest = await fetch(DATA_BASE + 'manifest.json').then(r => {
+      if (!r.ok) throw new Error('manifest not found');
+      return r.json();
+    });
+
+    state.stations.clear(); state.opTrips = {};
+    state.series = JSON.parse(JSON.stringify(SERIES_DEFS));
+
+    for (let i = 0; i < manifest.length; i++) {
+      fill.style.width = (i / manifest.length * 100) + '%';
+      hintMsg.textContent = `${i + 1} / ${manifest.length} — ${manifest[i]}`;
+      const url = DATA_BASE + manifest[i].split(' ').join('%20');
+      const text = await fetch(url).then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} for ${manifest[i]}`);
+        return r.text();
+      });
+      ingestFile(manifest[i], text);
+    }
+    fill.style.width = '100%';
+
+    if (!state.stations.size) {
+      hintTitle.textContent = 'No data found';
+      hintMsg.textContent = 'CSV files were fetched but no rows matched the expected format.';
+      sub.textContent = 'No data loaded';
+      return;
+    }
+
+    // apply friendly station names from station_names.json
+    try {
+      const names = await fetch(DATA_BASE + 'station_names.json').then(r => r.json());
+      state.stations.forEach((s, id) => { if (names[id]) s.name = names[id][0]; });
+    } catch (e) { /* names file optional */ }
+
+    // operator rebalancing events power the "without staff" counterfactual
+    try {
+      state.opTrips = await fetch(DATA_BASE + 'operator_trips.json').then(r => r.json());
+    } catch (e) { /* counterfactual line just won't render */ }
+
+    finalizeIngest('1');
+  } catch (e) {
+    hintTitle.textContent = 'Could not auto-load data';
+    hintMsg.textContent = 'Serve this file via HTTP (e.g. "npx serve ." or VS Code Live Server). Drag the Condensed Occupancy Data folder onto the chart area as a fallback.';
+    sub.textContent = 'No data loaded';
+    console.error(e);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', autoLoad);
+
+/* ============================== controls ============================== */
+
+document.getElementById('station').addEventListener('change', e => {
+  state.current = e.target.value;
+  applyScale(state.scale, true);
+  draw();
+});
+
+document.querySelectorAll('#scale-seg button').forEach(b =>
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#scale-seg button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    applyScale(b.dataset.scale, true);
+    draw();
+  }));
+
+document.getElementById('go-last').addEventListener('click', goLast);
+document.getElementById('lastn').addEventListener('keydown', e => { if (e.key === 'Enter') goLast(); });
+
+function goLast() {
+  const n = Math.max(1, +document.getElementById('lastn').value || 14);
+  const pts = currentPoints();
+  if (!pts.length) return;
+  const t1 = pts[pts.length - 1].t;
+  state.view = [t1 - n * 864e5, t1];
+  draw();
+}
+
+function applyScale(scale, resetView) {
+  state.scale = scale;
+  if (!resetView) return;
+  const pts = currentPoints();
+  if (!pts.length) return;
+  const t1 = pts[pts.length - 1].t;
+  const span = scale === 'hours' ? 3 * 864e5 : scale === 'days' ? 14 * 864e5 : 12 * 7 * 864e5;
+  state.view = [Math.max(pts[0].t, t1 - span), t1];
+}
+
+function currentPoints() {
+  const s = state.stations.get(state.current);
+  return s ? s.points : [];
+}
+
+/* ============================== key / legend ============================== */
+
+function buildKey() {
+  const list = document.getElementById('key-list');
+  list.innerHTML = '';
+  state.series.forEach(sd => {
+    const item = document.createElement('div');
+    item.className = 'key-item' + (sd.on ? '' : ' off');
+    item.setAttribute('role', 'button');
+    item.tabIndex = 0;
+    const sw = document.createElement('span');
+    sw.className = 'swatch' + (sd.style === 'dashed' ? ' dashed' : sd.style === 'area' ? ' area' : '');
+    if (sd.style === 'area') sw.style.background = hexA(sd.color, 0.45);
+    else sw.style.borderTopColor = sd.color;
+    if (sd.style === 'step-heavy') sw.style.borderTopWidth = '4px';
+    item.appendChild(sw);
+    item.appendChild(document.createTextNode(sd.label));
+    const toggle = () => { sd.on = !sd.on; item.classList.toggle('off', !sd.on); draw(); };
+    item.addEventListener('click', toggle);
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    list.appendChild(item);
+  });
+}
+
+function hexA(hex, a) {
+  const n = parseInt(hex.slice(1), 16);
+  return `rgba(${n >> 16 & 255},${n >> 8 & 255},${n & 255},${a})`;
+}
+
+/* ============================== chart ============================== */
+
+const canvas = document.getElementById('chart');
+const ctx = canvas.getContext('2d');
+const PAD = { l: 46, r: 16, t: 26, b: 42 };
+
+function seriesValue(p, id) {
+  if (id === 'availFit')   return (p.availM && p.availM.fit) || 0;
+  if (id === 'availEfit')  return (p.availM && p.availM.efit) || 0;
+  if (id === 'availStack') return seriesValue(p, 'availFit') + seriesValue(p, 'availEfit');
+  if (id === 'unrentable') return Math.max(0, p.total - p.available);
+  return p[id] || 0;
+}
+
+/* ---------- counterfactual: total bikes with staff rebalancing undone ----------
+   Operator dropoffs added bikes the station wouldn't otherwise have; pickups
+   removed bikes that would have stayed. So cf(t) = total(t) − Σdeltas, where
+   the sum covers operator events since the most recent midnight (the running
+   adjustment resets each day so months of drift don't accumulate). */
+function counterfactualPoints(t0, t1) {
+  const ev = state.opTrips[state.current];
+  const pts = currentPoints();
+  if (!ev || !ev.length || !pts.length) return [];
+
+  const dayStart = new Date(t0); dayStart.setHours(0, 0, 0, 0);
+  const from = dayStart.getTime();
+
+  // merge station snapshots, operator events and midnight resets into one walk
+  const marks = [];
+  pts.forEach(p => { if (p.t >= from && p.t <= t1) marks.push({ t: p.t, total: p.total }); });
+  ev.forEach(e => { const t = e[0] * 1000; if (t >= from && t <= t1) marks.push({ t, delta: e[1] }); });
+  for (let d = new Date(from); d.getTime() <= t1; d.setDate(d.getDate() + 1)) {
+    marks.push({ t: d.getTime(), reset: true });
+  }
+  marks.sort((a, b) => a.t - b.t);
+
+  // seed running total from the last snapshot before the walk begins
+  let total = pts[0].total;
+  for (const p of pts) { if (p.t <= from) total = p.total; else break; }
+
+  let adj = 0;
+  const out = [];
+  marks.forEach(m => {
+    if (m.reset) adj = 0;
+    if (m.total !== undefined) total = m.total;
+    if (m.delta) adj += m.delta;
+    const v = Math.max(0, total - adj);
+    if (out.length && out[out.length - 1].t === m.t) out[out.length - 1].v = v;
+    else out.push({ t: m.t, v });
+  });
+  return out;
+}
+
+let lastCfPts = []; // kept for the hover tooltip
+
+function visiblePoints() {
+  const pts = currentPoints();
+  if (!pts.length || !state.view) return [];
+  const [t0, t1] = state.view;
+  // include one point before / after the window so step lines extend to the edges
+  let i0 = pts.findIndex(p => p.t >= t0); if (i0 < 0) i0 = pts.length - 1;
+  i0 = Math.max(0, i0 - 1);
+  let i1 = pts.length - 1;
+  for (let i = pts.length - 1; i >= 0; i--) { if (pts[i].t <= t1) { i1 = Math.min(pts.length - 1, i + 1); break; } }
+  return pts.slice(i0, i1 + 1);
+}
+
+function draw() {
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = 460;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, w, h);
+
+  const pts = visiblePoints();
+  if (!pts.length || !state.view) return;
+  const [t0, t1] = state.view;
+  const X = t => PAD.l + (t - t0) / (t1 - t0) * (w - PAD.l - PAD.r);
+
+  // y max from visible data
+  let yMax = 4;
+  pts.forEach(p => state.series.forEach(sd => {
+    if (sd.on) yMax = Math.max(yMax, seriesValue(p, sd.id));
+  }));
+  const cfOn = state.series.find(s => s.id === 'counterfactual').on;
+  lastCfPts = cfOn ? counterfactualPoints(t0, t1) : [];
+  lastCfPts.forEach(c => { yMax = Math.max(yMax, c.v); });
+  yMax = Math.ceil(yMax * 1.15);
+  const Y = v => h - PAD.b - v / yMax * (h - PAD.t - PAD.b);
+
+  /* grid + axes */
+  ctx.font = '11px ' + getComputedStyle(document.body).getPropertyValue('--mono');
+  ctx.fillStyle = '#8A8F99'; ctx.strokeStyle = '#E2E0D8'; ctx.lineWidth = 1;
+  const ySteps = niceSteps(yMax, 5);
+  for (let v = 0; v <= yMax; v += ySteps) {
+    ctx.beginPath(); ctx.moveTo(PAD.l, Y(v)); ctx.lineTo(w - PAD.r, Y(v)); ctx.stroke();
+    ctx.textAlign = 'right'; ctx.fillText(String(v), PAD.l - 8, Y(v) + 4);
+  }
+  drawTimeAxis(w, h, t0, t1, X);
+
+  /* "Empty" baseline — heavy, like the wireframe */
+  ctx.strokeStyle = '#181A1F'; ctx.lineWidth = 3;
+  ctx.beginPath(); ctx.moveTo(PAD.l, Y(0)); ctx.lineTo(w - PAD.r, Y(0)); ctx.stroke();
+  ctx.fillStyle = '#181A1F'; ctx.textAlign = 'right'; ctx.font = '12px ' + getComputedStyle(document.body).getPropertyValue('--display');
+  ctx.fillText('Empty', w - PAD.r, Y(0) + 16);
+
+  /* capacity ceiling + hatched over-capacity band (signature element) */
+  const capOn = state.series.find(s => s.id === 'capacity').on;
+  if (capOn) {
+    hatchAboveCapacity(pts, X, Y, w);
+    drawStep(pts, 'capacity', X, Y, '#181A1F', 3.5, []);
+    const lastCap = seriesValue(pts[pts.length - 1], 'capacity');
+    ctx.fillStyle = '#181A1F'; ctx.textAlign = 'right';
+    ctx.fillText('Max Capacity', w - PAD.r, Y(lastCap) - 8);
+  }
+
+  /* stacked rentable bikes: blue fit from the baseline, gold efit on top */
+  const on = id => state.series.find(s => s.id === id).on;
+  if (on('availFit')) {
+    fillBand(pts, null, 'availFit', X, Y, 'rgba(74,111,165,0.35)');
+    drawStep(pts, 'availFit', X, Y, '#4A6FA5', 2, []);
+  }
+  if (on('availEfit')) {
+    const lowEdge = on('availFit') ? 'availFit' : null;
+    fillBand(pts, lowEdge, 'availStack', X, Y, 'rgba(245,180,10,0.40)');
+    drawStep(pts, 'availStack', X, Y, '#C98F00', 2, []);
+  }
+
+  /* unrentable gap: bikes present but not rentable, awaiting operator pickup */
+  if (on('unrentable')) {
+    fillBand(pts, 'availStack', 'total', X, Y, 'rgba(209,75,65,0.40)');
+  }
+
+  /* remaining step / dashed series (total, expected, faulty) */
+  state.series.forEach(sd => {
+    if (!sd.on || sd.id === 'capacity' || sd.style === 'area' || sd.id === 'counterfactual') return;
+    const dash = sd.style === 'dashed' ? [7, 5] : [];
+    const width = sd.style === 'step-heavy' ? 3.5 : sd.id === 'total' ? 2.5 : 1.75;
+    drawStep(pts, sd.id, X, Y, sd.color, width, dash);
+  });
+
+  /* counterfactual: dotted step of what occupancy would be without staff trips */
+  if (lastCfPts.length) {
+    ctx.beginPath();
+    lastCfPts.forEach((c, i) => {
+      const x = X(c.t), y = Y(c.v);
+      if (i === 0) ctx.moveTo(x, y);
+      else { ctx.lineTo(x, Y(lastCfPts[i - 1].v)); ctx.lineTo(x, y); }
+    });
+    ctx.strokeStyle = 'rgba(24,26,31,0.75)'; ctx.lineWidth = 2;
+    ctx.setLineDash([3, 4]); ctx.lineJoin = 'round';
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  /* range label + side stats */
+  document.getElementById('range-label').textContent =
+    fmtDate(t0) + '  →  ' + fmtDate(t1);
+  sideStats(pts);
+  drawCrosshair(w, h, X, Y);
+}
+
+function stepPath(pts, id, X, Y) {
+  pts.forEach((p, i) => {
+    const x = X(p.t), y = Y(seriesValue(p, id));
+    if (i === 0) ctx.moveTo(x, y);
+    else { ctx.lineTo(x, Y(seriesValue(pts[i - 1], id))); ctx.lineTo(x, y); }
+  });
+}
+
+/* fill between two step series; idLow of null means the zero baseline */
+function fillBand(pts, idLow, idHigh, X, Y, color) {
+  if (!pts.length) return;
+  const low = i => idLow ? Y(seriesValue(pts[i], idLow)) : Y(0);
+  ctx.beginPath();
+  stepPath(pts, idHigh, X, Y);
+  ctx.lineTo(X(pts[pts.length - 1].t), low(pts.length - 1));
+  for (let i = pts.length - 1; i > 0; i--) {
+    ctx.lineTo(X(pts[i].t), low(i - 1));
+    ctx.lineTo(X(pts[i - 1].t), low(i - 1));
+  }
+  ctx.closePath();
+  ctx.fillStyle = color;
+  ctx.fill();
+}
+
+function drawStep(pts, id, X, Y, color, width, dash) {
+  ctx.beginPath();
+  stepPath(pts, id, X, Y);
+  ctx.strokeStyle = color; ctx.lineWidth = width; ctx.setLineDash(dash);
+  ctx.lineJoin = 'round'; ctx.stroke(); ctx.setLineDash([]);
+}
+
+function hatchAboveCapacity(pts, X, Y, w) {
+  ctx.save();
+  ctx.beginPath();
+  // region between capacity line and a bit above it
+  pts.forEach((p, i) => {
+    const x = X(p.t), y = Y(seriesValue(p, 'capacity'));
+    if (i === 0) ctx.moveTo(x, y);
+    else { ctx.lineTo(x, Y(seriesValue(pts[i - 1], 'capacity'))); ctx.lineTo(x, y); }
+  });
+  const lastX = X(pts[pts.length - 1].t), firstX = X(pts[0].t);
+  ctx.lineTo(lastX, PAD.t); ctx.lineTo(firstX, PAD.t); ctx.closePath();
+  ctx.clip();
+  ctx.strokeStyle = 'rgba(24,26,31,0.10)'; ctx.lineWidth = 1;
+  for (let x = -460; x < w + 460; x += 9) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x + 460, 460); ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function niceSteps(max, target) {
+  const raw = max / target;
+  const pow = Math.pow(10, Math.floor(Math.log10(raw)));
+  for (const m of [1, 2, 5, 10]) if (m * pow >= raw) return m * pow;
+  return pow * 10;
+}
+
+function drawTimeAxis(w, h, t0, t1, X) {
+  const span = t1 - t0;
+  let step, fmt;
+  if (state.scale === 'hours' || span <= 2 * 864e5) {
+    step = span <= 12 * 36e5 ? 36e5 : 6 * 36e5;
+    fmt = t => { const d = new Date(t); return pad(d.getHours()) + ':00'; };
+  } else if (state.scale === 'weeks' || span > 30 * 864e5) {
+    step = 7 * 864e5;
+    fmt = t => shortDate(t);
+  } else {
+    step = Math.max(864e5, Math.ceil(span / 864e5 / 10) * 864e5);
+    fmt = t => shortDate(t);
+  }
+  const first = Math.ceil(t0 / step) * step;
+  ctx.fillStyle = '#8A8F99'; ctx.textAlign = 'center';
+  ctx.font = '11px ' + getComputedStyle(document.body).getPropertyValue('--mono');
+  for (let t = first; t <= t1; t += step) {
+    const x = X(t);
+    ctx.strokeStyle = '#EEECE3';
+    ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, h - PAD.b); ctx.stroke();
+    ctx.fillText(fmt(t), x, h - PAD.b + 18);
+  }
+}
+
+const pad = n => String(n).padStart(2, '0');
+const shortDate = t => { const d = new Date(t); return (d.getMonth() + 1) + '/' + d.getDate(); };
+const fmtDate = t => { const d = new Date(t); return d.toLocaleDateString() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes()); };
+
+function sideStats(pts) {
+  const last = pts[pts.length - 1];
+  const el = document.getElementById('key-stats');
+  if (!last) { el.innerHTML = ''; return; }
+  el.innerHTML =
+    'Latest reading<br>' +
+    '<b>' + fmtDate(last.t) + '</b><br>' +
+    'docks <b>' + last.capacity + '</b> · faulty <b>' + last.faulty + '</b><br>' +
+    'bikes <b>' + last.total + '</b> (fit <b>' + seriesValue(last, 'availFit') +
+    '</b> · efit <b>' + seriesValue(last, 'availEfit') + '</b>)<br>' +
+    'unrentable <b>' + seriesValue(last, 'unrentable') + '</b> · occupancy <b>' +
+    (last.capacity ? Math.round(last.total / last.capacity * 100) : 0) + '%</b>';
+}
+
+/* ---------- crosshair + tooltip ---------- */
+let hoverT = null;
+function drawCrosshair(w, h, X, Y) {
+  if (hoverT == null) return;
+  const pts = currentPoints();
+  if (!pts.length) return;
+  // last point at or before hoverT (step semantics)
+  let p = pts[0];
+  for (const q of pts) { if (q.t <= hoverT) p = q; else break; }
+  const x = X(hoverT);
+  if (x < PAD.l || x > w - PAD.r) return;
+  ctx.strokeStyle = 'rgba(24,26,31,0.45)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, h - PAD.b); ctx.stroke();
+  ctx.setLineDash([]);
+
+  const tip = document.getElementById('tip');
+  let html = '<div class="t-date">' + fmtDate(p.t) + '</div>';
+  state.series.forEach(sd => {
+    if (!sd.on) return;
+    let v;
+    if (sd.id === 'counterfactual') {
+      let c = null;
+      for (const q of lastCfPts) { if (q.t <= hoverT) c = q; else break; }
+      if (c == null) return;
+      v = c.v;
+    } else {
+      v = seriesValue(p, sd.id);
+    }
+    html += '<div class="t-row"><span>' + sd.label + '</span><span>' + v + '</span></div>';
+  });
+  tip.innerHTML = html;
+  tip.style.display = 'block';
+}
+
+canvas.addEventListener('mousemove', e => {
+  if (!state.view) return;
+  const rect = canvas.getBoundingClientRect();
+  const frac = (e.clientX - rect.left - PAD.l) / (rect.width - PAD.l - PAD.r);
+  if (dragging) {
+    const [t0, t1] = dragStartView;
+    const dt = (dragStartX - e.clientX) / (rect.width - PAD.l - PAD.r) * (t1 - t0);
+    state.view = [t0 + dt, t1 + dt];
+    hoverT = null;
+  } else {
+    hoverT = state.view[0] + frac * (state.view[1] - state.view[0]);
+    const tip = document.getElementById('tip');
+    tip.style.left = Math.min(window.innerWidth - 280, e.clientX + 16) + 'px';
+    tip.style.top = (e.clientY + 14) + 'px';
+  }
+  draw();
+});
+canvas.addEventListener('mouseleave', () => {
+  hoverT = null; document.getElementById('tip').style.display = 'none'; draw();
+});
+
+/* ---------- drag to pan ---------- */
+let dragging = false, dragStartX = 0, dragStartView = null;
+canvas.addEventListener('mousedown', e => {
+  if (!state.view) return;
+  dragging = true; dragStartX = e.clientX; dragStartView = [...state.view];
+  canvas.style.cursor = 'grabbing';
+  document.getElementById('tip').style.display = 'none';
+});
+window.addEventListener('mouseup', () => { dragging = false; canvas.style.cursor = 'crosshair'; });
+canvas.addEventListener('dblclick', () => { applyScale(state.scale, true); draw(); });
+window.addEventListener('resize', draw);
+</script>
 </body>
 </html>

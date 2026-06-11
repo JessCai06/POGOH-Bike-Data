@@ -4,9 +4,10 @@ from datetime import datetime
 
 import plotly.graph_objects as go
 
-FLOW_JSON   = "flow_rates_hourly.json"
-NAMES_JSON  = "station_names.json"
-OUTPUT_HTML = "flow_rate_viz.html"
+folder = 'Dock Sizing'
+FLOW_JSON   = f"{folder}/flow_rates_hourly.json"
+NAMES_JSON  = f"{folder}/station_names.json"
+OUTPUT_HTML = f"{folder}/flow_rate_viz.html"
 
 with open(FLOW_JSON, encoding="utf-8") as f:
     data = json.load(f)
