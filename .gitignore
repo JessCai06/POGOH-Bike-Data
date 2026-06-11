@@ -21,3 +21,5 @@ Station Sample Data/
 
 # # Exception: un-ignore a specific file (! means "don't ignore this")
 # !important.csv
+!manifest.json
+!operator_trips.json
