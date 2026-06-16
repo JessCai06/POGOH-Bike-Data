@@ -24,3 +24,5 @@ Station Sample Data/
 !manifest.json
 !operator_trips.json
 !station_names.json
+!occupancy_by_hour.json
+!occupancy_by_weekday.json
