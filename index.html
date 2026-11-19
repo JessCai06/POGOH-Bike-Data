@@ -43,9 +43,9 @@
 
   /* ---------- toolbar ---------- */
   .toolbar {
-    display: flex; align-items: center; gap: 14px; flex-wrap: nowrap;
+    display: flex; align-items: center; gap: 12px 14px; flex-wrap: wrap;
     padding: 10px 0 8px; border-bottom: 2px solid var(--ink); margin-bottom: 4px;
-    flex: 0 0 auto; overflow: hidden;
+    flex: 0 0 auto;
   }
   .tool { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--ink-soft); white-space: nowrap; }
   .tool label { white-space: nowrap; }
@@ -67,6 +67,13 @@
   select {
     font-family: var(--mono); font-size: 12px; padding: 4px 7px; max-width: 230px;
     border: 1.5px solid var(--ink); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  input[type="date"] {
+    font-family: var(--mono); font-size: 12px; padding: 3px 6px;
+    border: 1.5px solid var(--ink); border-radius: 6px; background: #fff; color: var(--ink);
+  }
+  .date-slider {
+    width: 108px; accent-color: var(--gold-deep); cursor: pointer; vertical-align: middle;
   }
   .btn {
     font-family: var(--display); font-size: 12px; font-weight: 600; cursor: pointer;
@@ -188,10 +195,32 @@
       </div>
     </div>
     <div class="tool">
+      <div class="seg" id="range-mode-seg" role="group" aria-label="Date selection mode">
+        <button data-mode="range" class="on">range</button>
+        <button data-mode="last">last</button>
+      </div>
+    </div>
+    <div class="tool" id="range-tool">
+      <label for="from-date">View from</label>
+      <input type="date" id="from-date">
+      <input type="range" id="from-slider" class="date-slider" title="Drag to pick the start date">
+      <label for="to-date">to</label>
+      <input type="date" id="to-date">
+      <button class="btn ghost" id="go-range">Go</button>
+    </div>
+    <div class="tool" id="last-tool" style="display:none">
       <label for="lastn">Go to last</label>
       <input type="number" id="lastn" min="1" value="14">
       <span>days</span>
       <button class="btn ghost" id="go-last">Go</button>
+    </div>
+    <div class="tool">
+      <label for="avg-value">Avg occupancy · last</label>
+      <input type="number" id="avg-value" min="1" value="1">
+      <div class="seg" id="avg-unit-seg" role="group" aria-label="Averaging window unit">
+        <button data-unit="hours">hours</button>
+        <button data-unit="days" class="on">days</button>
+      </div>
     </div>
     <span class="spacer"></span>
     <span class="tool" id="range-label"></span>
@@ -220,7 +249,7 @@
       </div>
       <div id="key-list"></div>
       <div class="key-stats" id="key-stats"></div>
-      <p class="key-note">Snapshots are drawn as step lines: each value holds until the next reading. The purple typical-occupancy band shows hour-of-day patterns in the hours view and day-of-week patterns in the days view. Drag to pan · scroll or ± to zoom · double-click to reset.</p>
+      <p class="key-note">Snapshots are drawn as step lines: each value holds until the next reading. The purple average-occupancy band is a rolling mean and Q1–Q3 over the window set in the toolbar. Drag to pan · scroll or ± to zoom · double-click to reset.</p>
     </aside>
     <button class="btn ghost key-reopen" id="key-show" title="Show key panel">Key</button>
   </div>
@@ -239,7 +268,7 @@ const SERIES_DEFS = [
   { id: 'availEfit',     label: 'Rentable efit (electric) bikes',       color: '#E0A400', style: 'area',       on: true },
   { id: 'unrentable',    label: 'Unrentable (awaiting operator pull)',  color: '#D14B41', style: 'area',       on: true },
   { id: 'counterfactual',label: 'Without staff rebalancing',            color: '#181A1F', style: 'dashed',     on: true },
-  { id: 'pattern',       label: 'Typical occupancy (mean · Q1–Q3)',     color: '#7A4FBF', style: 'area',       on: true },
+  { id: 'pattern',       label: 'Average occupancy (mean · Q1–Q3)',     color: '#7A4FBF', style: 'area',       on: true },
   { id: 'expected',      label: 'Expected station size',                color: '#8A8F99', style: 'dashed',     on: false },
   { id: 'faulty',        label: 'Faulty docks',                         color: '#D14B41', style: 'dashed',     on: false },
 ];
@@ -251,8 +280,9 @@ const state = {
   view: null,            // [t0, t1] ms
   series: JSON.parse(JSON.stringify(SERIES_DEFS)),
   opTrips: {},           // station id -> [[epoch_s, delta, model], ...] operator rebalancing events
-  occHour: null,         // station id -> {mean,Q1,Q3} 24-value hour-of-day occupancy ratios
-  occWeekday: null,      // station id -> {mean,Q1,Q3} 7-value day-of-week occupancy ratios
+  avgValue: 1,           // rolling "average occupancy" window size ...
+  avgUnit: 'days',       // ... in these units ('hours' | 'days')
+  dataRange: null,       // [minT, maxT] across all loaded stations, for the date picker
 };
 
 /* ============================== CSV parsing ============================== */
@@ -361,8 +391,40 @@ function finalizeIngest(preferredId) {
   document.querySelectorAll('#scale-seg button').forEach(b =>
     b.classList.toggle('on', b.dataset.scale === 'hours'));
 
+  // full extent of the data, for the date-range picker
+  let minT = Infinity, maxT = 0;
+  state.stations.forEach(s => {
+    if (!s.points.length) return;
+    minT = Math.min(minT, s.points[0].t);
+    maxT = Math.max(maxT, s.points[s.points.length - 1].t);
+  });
+  state.dataRange = isFinite(minT) ? [minT, maxT] : null;
+  setupDateControls();
+
   buildKey();
   draw();
+}
+
+/* ---------- date-range picker wiring ---------- */
+const dstr = t => { const d = new Date(t); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); };
+function dayStartEpoch(s) { const [y, m, d] = (s || '').split('-').map(Number); return new Date(y, m - 1, d, 0, 0, 0, 0).getTime(); }
+function dayEndEpoch(s) { const [y, m, d] = (s || '').split('-').map(Number); return new Date(y, m - 1, d, 23, 59, 59, 999).getTime(); }
+
+function setupDateControls() {
+  if (!state.dataRange) return;
+  const [minT, maxT] = state.dataRange;
+  const fromEl = document.getElementById('from-date');
+  const toEl = document.getElementById('to-date');
+  const slider = document.getElementById('from-slider');
+  fromEl.min = toEl.min = dstr(minT);
+  fromEl.max = toEl.max = dstr(maxT);
+  slider.min = 0;
+  slider.max = Math.max(1, Math.round((maxT - minT) / 864e5));  // whole days of coverage
+  slider.step = 1;
+  const [v0, v1] = state.view;
+  fromEl.value = dstr(v0);
+  toEl.value = dstr(v1);
+  slider.value = Math.round((v0 - minT) / 864e5);
 }
 
 /* ============================== auto-load from Condensed Occupancy Data ============================== */
@@ -381,7 +443,7 @@ async function autoLoad() {
       return r.json();
     });
 
-    state.stations.clear(); state.opTrips = {}; state.occHour = null; state.occWeekday = null;
+    state.stations.clear(); state.opTrips = {};
     state.series = JSON.parse(JSON.stringify(SERIES_DEFS));
 
     for (let i = 0; i < manifest.length; i++) {
@@ -414,14 +476,6 @@ async function autoLoad() {
       state.opTrips = await fetch(DATA_BASE + 'operator_trips.json').then(r => r.json());
     } catch (e) { /* counterfactual line just won't render */ }
 
-    // typical occupancy patterns (mean / Q1 / Q3 per hour-of-day and weekday)
-    try {
-      state.occHour = (await fetch(DATA_BASE + 'occupancy_by_hour.json').then(r => r.json())).stations;
-    } catch (e) { /* hour pattern just won't render */ }
-    try {
-      state.occWeekday = (await fetch(DATA_BASE + 'occupancy_by_weekday.json').then(r => r.json())).stations;
-    } catch (e) { /* weekday pattern just won't render */ }
-
     finalizeIngest('1');
   } catch (e) {
     hintTitle.textContent = 'Could not auto-load data';
@@ -449,6 +503,16 @@ document.querySelectorAll('#scale-seg button').forEach(b =>
     draw();
   }));
 
+/* ---------- date mode: switch between "range" and "go to last N days" ---------- */
+document.querySelectorAll('#range-mode-seg button').forEach(b =>
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#range-mode-seg button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const range = b.dataset.mode === 'range';
+    document.getElementById('range-tool').style.display = range ? '' : 'none';
+    document.getElementById('last-tool').style.display = range ? 'none' : '';
+  }));
+
 document.getElementById('go-last').addEventListener('click', goLast);
 document.getElementById('lastn').addEventListener('keydown', e => { if (e.key === 'Enter') goLast(); });
 
@@ -460,6 +524,44 @@ function goLast() {
   state.view = [t1 - n * 864e5, t1];
   draw();
 }
+
+/* ---------- date range: pick a start (field or slider), end defaults to today ---------- */
+const fromDateEl = document.getElementById('from-date');
+const toDateEl = document.getElementById('to-date');
+const fromSliderEl = document.getElementById('from-slider');
+
+fromSliderEl.addEventListener('input', () => {           // live: scrub the start date
+  if (!state.dataRange) return;
+  fromDateEl.value = dstr(state.dataRange[0] + (+fromSliderEl.value) * 864e5);
+});
+fromSliderEl.addEventListener('change', applyDateRange); // apply on release
+document.getElementById('go-range').addEventListener('click', applyDateRange);
+fromDateEl.addEventListener('keydown', e => { if (e.key === 'Enter') applyDateRange(); });
+toDateEl.addEventListener('keydown', e => { if (e.key === 'Enter') applyDateRange(); });
+
+function applyDateRange() {
+  let a = dayStartEpoch(fromDateEl.value);
+  let b = dayEndEpoch(toDateEl.value);
+  if (isNaN(a) || isNaN(b)) return;
+  if (a > b) { [a, b] = [b, a]; }
+  state.view = [a, b];
+  if (state.dataRange) fromSliderEl.value = Math.round((a - state.dataRange[0]) / 864e5);
+  draw();
+}
+
+/* ---------- average-occupancy window (drives the rolling purple line) ---------- */
+const avgValueEl = document.getElementById('avg-value');
+avgValueEl.addEventListener('input', () => {
+  state.avgValue = Math.max(1, +avgValueEl.value || 1);
+  draw();
+});
+document.querySelectorAll('#avg-unit-seg button').forEach(b =>
+  b.addEventListener('click', () => {
+    document.querySelectorAll('#avg-unit-seg button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    state.avgUnit = b.dataset.unit;
+    draw();
+  }));
 
 /* ---------- zoom: rescale the view window around an anchor fraction ----------
    anchor 0..1 is where in the current window to keep fixed (0.5 = center).
@@ -596,37 +698,51 @@ function counterfactualPoints(t0, t1) {
 }
 
 let lastCfPts = [];  // kept for the hover tooltip
-let lastPatPts = []; // typical-occupancy pattern, kept for the hover tooltip
+let lastPatPts = []; // rolling average-occupancy samples, kept for the hover tooltip
 
-/* ---------- typical occupancy pattern ----------
-   The stats are occupancy ratios (bikes / docks); we sample the matching
-   hour-of-day (in hours view) or day-of-week (in days view) bucket once per
-   hour across the window and scale by the docks in effect to get bike counts,
-   so the pattern shares the chart's y-axis. Returns null where it shouldn't
-   render, or an array with null gaps where a bucket has no data. */
-function patternPoints(cat, t0, t1) {
-  let data, byWeekday;
-  if (cat === 'hours')      { data = state.occHour;    byWeekday = false; }
-  else if (cat === 'days')  { data = state.occWeekday; byWeekday = true; }
-  else return null;            // weeks view: no pattern
-  if (!data) return null;
-  const st = data[state.current];
-  if (!st) return null;
+/* ---------- rolling "average occupancy" ----------
+   Reconstruct this station's total-bikes step signal on a regular grid, then at
+   each point report the mean and Q1–Q3 of the values inside a trailing window of
+   `avgValue` hours/days. Window and grid are self-contained (no precomputed
+   files), so any value works and the purple line/band reflect the actual data.
+   Returns an array with null gaps wherever a window has no readings yet. */
+function patternPoints(t0, t1) {
   const pts = currentPoints();
   if (!pts.length) return null;
+  const W = state.avgValue * (state.avgUnit === 'hours' ? HR_MS : DAY_MS);
 
+  // grid fine enough to resolve the window, but capped for performance
+  const dt = Math.max(60e3, Math.min(W / 30, (t1 - t0) / 700));
+  const gridStart = t0 - W;
+
+  // reconstruct total-bikes (step) across the grid
+  const grid = [];
+  let ci = 0, val = null;
+  for (let cur = gridStart; cur <= t1 + dt; cur += dt) {
+    while (ci < pts.length && pts[ci].t <= cur) { val = pts[ci].total; ci++; }
+    grid.push(cur < pts[0].t ? null : val);  // null before the first reading
+  }
+
+  const wCount = Math.max(1, Math.round(W / dt));
   const out = [];
-  let ci = 0, cap = pts[0].capacity;
-  const start = new Date(t0); start.setMinutes(0, 0, 0, 0);
-  for (let cur = start.getTime(); cur <= t1 + HR_MS; cur += HR_MS) {
-    while (ci < pts.length && pts[ci].t <= cur) { cap = pts[ci].capacity; ci++; }
-    const d = new Date(cur);
-    const k = byWeekday ? (d.getDay() + 6) % 7 : d.getHours();  // JS Sun=0 -> Mon=0
-    const m = st.mean[k];
-    if (m == null || !cap) { out.push(null); continue; }
-    out.push({ t: cur, mean: m * cap, q1: st.Q1[k] * cap, q3: st.Q3[k] * cap });
+  for (let i = 0; i < grid.length; i++) {
+    const cur = gridStart + i * dt;
+    if (cur < t0) continue;                  // only emit inside the view
+    const win = [];
+    for (let j = Math.max(0, i - wCount); j <= i; j++) if (grid[j] != null) win.push(grid[j]);
+    if (!win.length) { out.push(null); continue; }
+    win.sort((a, b) => a - b);
+    const mean = win.reduce((s, v) => s + v, 0) / win.length;
+    out.push({ t: cur, mean, q1: percentile(win, 0.25), q3: percentile(win, 0.75) });
   }
   return out;
+}
+
+// linear-interpolation percentile over an already-sorted array
+function percentile(sorted, q) {
+  if (sorted.length === 1) return sorted[0];
+  const pos = q * (sorted.length - 1), lo = Math.floor(pos), f = pos - lo;
+  return lo + 1 < sorted.length ? sorted[lo] * (1 - f) + sorted[lo + 1] * f : sorted[lo];
 }
 
 // split a pattern array into contiguous runs of non-null samples
@@ -663,8 +779,6 @@ function draw() {
   if (!pts.length || !state.view) return;
   const [t0, t1] = state.view;
   const X = t => PAD.l + (t - t0) / (t1 - t0) * (w - PAD.l - PAD.r);
-  // the granularity this zoom maps onto — drives which occupancy pattern shows
-  const cat = scaleCategory(pickTickStep(t1 - t0, w - PAD.l - PAD.r));
 
   // y max from visible data
   let yMax = 4;
@@ -675,7 +789,7 @@ function draw() {
   lastCfPts = cfOn ? counterfactualPoints(t0, t1) : [];
   lastCfPts.forEach(c => { yMax = Math.max(yMax, c.v); });
   const patOn = state.series.find(s => s.id === 'pattern').on;
-  lastPatPts = patOn ? (patternPoints(cat, t0, t1) || []) : [];
+  lastPatPts = patOn ? (patternPoints(t0, t1) || []) : [];
   lastPatPts.forEach(p => { if (p) yMax = Math.max(yMax, p.q3); });
   yMax = Math.ceil(yMax * 1.15);
   const Y = v => h - PAD.b - v / yMax * (h - PAD.t - PAD.b);
@@ -890,7 +1004,8 @@ function tickLabel(t, step) {
 function drawTimeAxis(w, h, t0, t1, X) {
   const avail = w - PAD.l - PAD.r;
   const step = pickTickStep(t1 - t0, avail);
-  syncScaleChip(scaleCategory(step));
+  const cat = scaleCategory(step);
+  syncScaleChip(cat);
   ctx.fillStyle = '#8A8F99'; ctx.textAlign = 'center';
   ctx.font = '11px ' + getComputedStyle(document.body).getPropertyValue('--mono');
   for (const t of timeTicks(t0, t1, step)) {
@@ -899,6 +1014,25 @@ function drawTimeAxis(w, h, t0, t1, X) {
     ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, h - PAD.b); ctx.stroke();
     ctx.fillText(tickLabel(t, step), x, h - PAD.b + 18);
   }
+  // heavier separators marking the unit of the current scale (days or weeks)
+  ctx.strokeStyle = 'rgba(24,26,31,0.16)'; ctx.lineWidth = 1.5;
+  for (const t of majorBoundaries(t0, t1, cat)) {
+    const x = X(t);
+    ctx.beginPath(); ctx.moveTo(x, PAD.t); ctx.lineTo(x, h - PAD.b); ctx.stroke();
+  }
+  ctx.lineWidth = 1;
+}
+
+// boundary timestamps for the scale-aware separators: day edges for the
+// hours/days scales, week edges (Mondays) for the weeks scale
+function majorBoundaries(t0, t1, cat) {
+  const stepDays = cat === 'weeks' ? 7 : 1;
+  const d = new Date(t0); d.setHours(0, 0, 0, 0);
+  if (cat === 'weeks') d.setDate(d.getDate() - ((d.getDay() + 6) % 7));  // back to Monday
+  while (d.getTime() < t0) d.setDate(d.getDate() + stepDays);
+  const out = [];
+  for (; d.getTime() <= t1; d.setDate(d.getDate() + stepDays)) out.push(d.getTime());
+  return out;
 }
 
 // reflect the current zoom granularity in the segmented control
